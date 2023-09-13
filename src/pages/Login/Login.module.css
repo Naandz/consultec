@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  color: #2256f2;
+  font-size: 4.5rem;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+.card {
+  margin-left: 4em;
+}
