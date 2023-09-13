@@ -21,7 +21,6 @@ export default function Login() {
             Entrar
           </Button>
         </Card>
-        
       </div>
     </div>
   );
