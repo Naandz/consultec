@@ -10,6 +10,7 @@ h1 {
   font-size: 4.5rem;
   text-decoration: underline;
   text-decoration-thickness: 3px;
+  text-shadow: 2px 1px #757578;
 }
 
 .card {
