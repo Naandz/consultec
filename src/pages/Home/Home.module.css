@@ -1,0 +1,28 @@
+.header {
+  background-color: #2256f2;
+}
+
+.logout {
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.7em;
+}
+
+.logout:hover {
+  background-color: #4674ff;
+}
+
+.title {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-shadow: 1px 1px #757578;
+}
+
+.iten {
+  color: #fff;
+}
+
+.iten:hover {
+  background-color: #4674ff;
+}
