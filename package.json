@@ -16,10 +16,14 @@
     "@mantine/hooks": "^6.0.20",
     "@mantine/modals": "^6.0.20",
     "@mantine/notifications": "^6.0.20",
+    "@tanstack/react-query": "^4.35.3",
+    "axios": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
-    "react-router-dom": "^6.15.0"
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.15.0",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
