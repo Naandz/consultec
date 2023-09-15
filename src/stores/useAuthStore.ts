@@ -2,21 +2,21 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface authStore {
-  token: string;
-  addLoginInfo: (info: { token: string }) => void;
+  access_token: string;
+  addLoginInfo: (info: { access_token: string }) => void;
   logout: () => void;
 }
 
 export const useAuthStore = create(
   persist<authStore>(
     (set) => ({
-      token: "",
+      access_token: "",
 
-      addLoginInfo({ token }: { token: string }) {
-        set({ token });
+      addLoginInfo({ access_token }: { access_token: string }) {
+        set({ access_token });
       },
       logout() {
-        set({ token: "" });
+        set({ access_token: "" });
       },
     }),
     {

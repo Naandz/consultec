@@ -2,8 +2,8 @@ import { useMutation } from "@tanstack/react-query";
 import api from "../api";
 
 type PropsData = {
-  usuario: string;
-  senha: string;
+  login: string;
+  password: string;
 };
 
 export type Response = {

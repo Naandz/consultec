@@ -4,10 +4,10 @@ import { useAuthStore } from "../stores/useAuthStore";
 const api = axios.create({ baseURL: "https://consultech.onrender.com" });
 
 api.interceptors.request.use(async (config) => {
-  const { token } = useAuthStore.getState();
+  const { access_token } = useAuthStore.getState();
 
-  if (token) {
-    (config.headers as AxiosHeaders).set("Authorization", `Bearer ${token}`);
+  if (access_token) {
+    (config.headers as AxiosHeaders).set("Authorization", `Bearer ${access_token}`);
   }
 
   return config;
