@@ -14,16 +14,18 @@ import {
 import { useState } from "react";
 import { TbLogout } from "react-icons/tb";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../stores/useAuthStore";
 
 export default function Home() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
 
   const navigate = useNavigate();
+  const authStore = useAuthStore();
 
   const logout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
+    authStore.logout();
+    navigate("/session/login");
   };
 
   const itensMenu = [
