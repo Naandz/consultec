@@ -1,4 +1,10 @@
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Fisica from "./pages/Fisica/Fisica";
@@ -8,26 +14,46 @@ import Login from "./pages/Login/Login";
 import { useAuthStore } from "./stores/useAuthStore";
 
 const AuthRoute = () => {
-  const { token } = useAuthStore.getState();
+  const { access_token } = useAuthStore.getState();
 
-  if (token) {
+  if (access_token) {
     return <Navigate to="/" />;
   }
 
   return <Outlet />;
 };
 
+function ProtectedRoute({ outlet }: { outlet: JSX.Element }) {
+  const { access_token } = useAuthStore.getState();
+
+  if (!access_token) {
+    return <Navigate to="/session/login" />;
+  }
+  return outlet;
+}
+
 export function Router() {
   return (
-    <Routes>
-      <Route element={<AuthRoute />}>
-        <Route path="/login" element={<Login />} />
-      </Route>
-      <Route path="/" element={<Home />}>
-        <Route path="/juridica" element={<Juridica />} />
-        <Route path="/fisica" element={<Fisica />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AuthRoute />}>
+          <Route path="/session/login" element={<Login />} />
+        </Route>
+        <Route path="/" element={<ProtectedRoute outlet={<Home />} />}>
+          <Route
+            path="/juridica"
+            element={<ProtectedRoute outlet={<Juridica />} />}
+          />
+          <Route
+            path="/fisica"
+            element={<ProtectedRoute outlet={<Fisica />} />}
+          />
+          <Route
+            path="/cadastro"
+            element={<ProtectedRoute outlet={<Cadastro />} />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }

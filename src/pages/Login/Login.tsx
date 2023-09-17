@@ -15,23 +15,24 @@ export default function Login() {
 
   const form = useForm({
     initialValues: {
-      usuario: "",
-      senha: "",
+      login: "",
+      password: "",
     },
   });
 
   const login = async ({
-    usuario,
-    senha,
+    login,
+    password,
   }: {
-    usuario: string;
-    senha: string;
+    login: string;
+    password: string;
   }) => {
     try {
-      const data = await fazerLogin({ usuario, senha });
+      const data = await fazerLogin({ login, password });
 
       authStore.addLoginInfo({
-        token: data.data.token,
+        access_token: data.data.access_token,
+        user_id: data.data.user_id,
       });
 
       navigate("/");
@@ -68,13 +69,13 @@ export default function Login() {
               withAsterisk
               label="Usuário"
               placeholder="example@mail.com"
-              {...form.getInputProps("usuario")}
+              {...form.getInputProps("login")}
             />
             <PasswordInput
               placeholder="Digite a sua senha"
               label="Senha"
               withAsterisk
-              {...form.getInputProps("senha")}
+              {...form.getInputProps("password")}
             />
             <Button
               gradient={{ from: "#2256f2", to: "#4674FF" }}
