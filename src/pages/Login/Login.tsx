@@ -17,6 +17,8 @@ export default function Login() {
     initialValues: {
       login: "",
       password: "",
+      login: "",
+      password: "",
     },
   });
 
@@ -26,8 +28,11 @@ export default function Login() {
   }: {
     login: string;
     password: string;
+    login: string;
+    password: string;
   }) => {
     try {
+      const data = await fazerLogin({ login, password });
       const data = await fazerLogin({ login, password });
 
       authStore.addLoginInfo({
@@ -64,17 +69,19 @@ export default function Login() {
       </div>
       <div className={styles.card}>
         <Card radius="md" shadow="sm" p="lg">
-          <form onSubmit={form.onSubmit(login)}>
+          <form onSubmit={form.onSubmit(logins)}>
             <TextInput
               withAsterisk
               label="Usuário"
               placeholder="example@mail.com"
+              {...form.getInputProps("login")}
               {...form.getInputProps("login")}
             />
             <PasswordInput
               placeholder="Digite a sua senha"
               label="Senha"
               withAsterisk
+              {...form.getInputProps("password")}
               {...form.getInputProps("password")}
             />
             <Button
