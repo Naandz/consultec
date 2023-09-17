@@ -18,7 +18,7 @@ export default function Juridica() {
         horizontalSpacing="xs"
         verticalAlignment="center"
         fetching={isFetching || isRefetching}
-        records={data || []}
+        records={data}
         columns={[
           { accessor: "numero", title: "Nº", textAlignment: "center" },
           { accessor: "fantasia", title: "Fantasia", textAlignment: "center" },

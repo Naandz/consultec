@@ -3,7 +3,7 @@ import ApiResponse from "../apiResponse";
 import { Clientes } from "./Clientes";
 
 const listaClientes = async () => {
-  const { data } = await api.get<ApiResponse<Clientes[]>>("/client");
+  const { data } = await api.get<Clientes[]>("/client");
   return data;
 };
 
