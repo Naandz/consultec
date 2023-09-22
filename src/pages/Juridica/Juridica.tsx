@@ -11,6 +11,7 @@ export default function Juridica() {
   return (
     <div>
       <DataTable
+        minHeight={132}
         withBorder
         shadow="sm"
         striped
@@ -18,16 +19,17 @@ export default function Juridica() {
         horizontalSpacing="xs"
         verticalAlignment="center"
         fetching={isFetching || isRefetching}
-        records={data?.data || []}
+        records={data || []}
         columns={[
-          { accessor: "numero", title: "Nº", textAlignment: "center" },
           { accessor: "fantasia", title: "Fantasia", textAlignment: "center" },
           {
             accessor: "razaosocial",
             title: "Razão Social",
             textAlignment: "center",
           },
-          { accessor: "contrato", title: "Contrato", textAlignment: "center" },
+          { accessor: "cgc", title: "CNPJ", textAlignment: "center" },
+          { accessor: "telefone", title: "Tell", textAlignment: "center" },
+          { accessor: "contrato", title: "Contrato", textAlignment: "center" }
         ]}
         noRecordsText="Nenhum registro encontrado!"
       />
