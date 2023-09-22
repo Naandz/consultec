@@ -20,7 +20,7 @@ export default function Login() {
     },
   });
 
-  const logins = async ({
+  const login = async ({
     login,
     password,
   }: {
@@ -31,7 +31,8 @@ export default function Login() {
       const data = await fazerLogin({ login, password });
 
       authStore.addLoginInfo({
-        access_token: data.data.token,
+        access_token: data.data.access_token,
+        user_id: data.data.user_id,
       });
 
       navigate("/");
@@ -63,7 +64,7 @@ export default function Login() {
       </div>
       <div className={styles.card}>
         <Card radius="md" shadow="sm" p="lg">
-          <form onSubmit={form.onSubmit(logins)}>
+          <form onSubmit={form.onSubmit(login)}>
             <TextInput
               withAsterisk
               label="Usuário"

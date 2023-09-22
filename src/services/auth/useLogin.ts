@@ -7,7 +7,8 @@ type PropsData = {
 };
 
 export type Response = {
-  token: string;
+  access_token: string;
+	user_id: string;
 };
 
 function useLogin() {

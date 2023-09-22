@@ -1,6 +1,6 @@
-import { BrowserRouter } from "react-router-dom";
-import { Router } from "./Router";
+import { Notifications } from "@mantine/notifications";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Router } from "./Router";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,9 +15,8 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        <Notifications />
+        <Router />
       </QueryClientProvider>
     </>
   );
