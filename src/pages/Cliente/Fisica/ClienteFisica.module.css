@@ -1,0 +1,16 @@
+.dados {
+    height: 2.25rem;
+    width: 22.8em;
+    box-sizing: border-box;
+    font-size: 0.875rem;
+    color: #3f3f3f;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    border: 0.0625rem solid #ced4da;
+    background-color: #fff;
+    min-height: 2.25rem;
+    padding-left: calc(2.25rem / 3);
+    padding-right: calc(2.25rem / 3);
+    border-radius: 0.25rem;
+}

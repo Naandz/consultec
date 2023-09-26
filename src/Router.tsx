@@ -6,11 +6,13 @@ import {
   Routes,
 } from "react-router-dom";
 
-import Cadastro from "./pages/Cadastro/Cadastro";
+import CadastroFisica from "./pages/Cadastro/Fisica/CadastroFisica";
+import CadastroJuridica from "./pages/Cadastro/Juridica/CadastroJuridica";
 import Fisica from "./pages/Fisica/Fisica";
 import Home from "./pages/Home/Home";
 import Juridica from "./pages/Juridica/Juridica";
 import Login from "./pages/Login/Login";
+import ClienteFisica from "./pages/Cliente/Fisica/clienteFisica";
 import { useAuthStore } from "./stores/useAuthStore";
 
 const AuthRoute = () => {
@@ -49,8 +51,16 @@ export function Router() {
             element={<ProtectedRoute outlet={<Fisica />} />}
           />
           <Route
-            path="/cadastro"
-            element={<ProtectedRoute outlet={<Cadastro />} />}
+            path="/cadastro/fisica"
+            element={<ProtectedRoute outlet={<CadastroFisica />} />}
+          />
+          <Route
+            path="/cadastro/juridica"
+            element={<ProtectedRoute outlet={<CadastroJuridica />} />}
+          />
+          <Route
+            path="/cliente/fisica/clienteFisica"
+            element={<ProtectedRoute outlet={<ClienteFisica />} />}
           />
         </Route>
       </Routes>
