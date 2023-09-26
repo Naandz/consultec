@@ -8,14 +8,16 @@ import {
   Header,
   MediaQuery,
   NavLink,
-  Title,
-  useMantineTheme,
+  useMantineTheme
 } from "@mantine/core";
 import { useState } from "react";
+import { AiFillFileAdd } from "react-icons/ai";
+import { BsFileEarmarkPersonFill } from "react-icons/bs";
+import { FaBalanceScale } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import consultec from '../../assets/CONSULTEC.svg';
 import { useAuthStore } from "../../stores/useAuthStore";
-
 export default function Home() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
@@ -31,15 +33,18 @@ export default function Home() {
   const itensMenu = [
     {
       label: "Júridica",
+      icon: FaBalanceScale,
       path: "/juridica",
     },
     {
       label: "Física",
+      icon: BsFileEarmarkPersonFill,
       path: "/fisica",
     },
     {
       label: "Cadastro",
-      path: "/cadastro",
+      icon: AiFillFileAdd,
+      path: "/cadastro/juridica",
     },
   ];
 
@@ -66,7 +71,7 @@ export default function Home() {
                 mr="xl"
               />
             </MediaQuery>
-            <Title className={styles.title}>CONSULTEC</Title>
+            <img src={consultec} alt="" />
             <Flex>
               <Group spacing={5}>
                 <Flex>
@@ -74,6 +79,7 @@ export default function Home() {
                     <NavLink
                       key={item.label}
                       label={item.label}
+                      icon={<item.icon/>}
                       component={Link}
                       to={item.path}
                       onClick={() => setOpened(false)}

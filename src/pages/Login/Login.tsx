@@ -1,12 +1,15 @@
 import styles from "./Login.module.css";
 
-import { Button, Card, PasswordInput, Text, TextInput } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { Button, Card, PasswordInput, TextInput } from "@mantine/core";
+import { isNotEmpty, useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import useLogin from "../../services/auth/useLogin";
 import { useAuthStore } from "../../stores/useAuthStore";
+
+import Caderneta from "../../assets/Caderneta.svg";
+import LogoMarca from "../../assets/LogoMarca.svg";
 
 export default function Login() {
   const { fazerLogin, isLoading } = useLogin();
@@ -17,7 +20,10 @@ export default function Login() {
     initialValues: {
       login: "",
       password: "",
-    },
+    }, validate: {
+      login: isNotEmpty('Informe um e-mail'),
+      password: isNotEmpty('Informe a senha')
+    }
   });
 
   const login = async ({
@@ -56,14 +62,12 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-      <div>
-        <h1>Consultec</h1>
-        <Text color="#757578">
-          Contabilidade Profissional, Soluções Sólidas!
-        </Text>
-      </div>
+    
+        <img className={styles.logo} src={LogoMarca} alt="Logo" />
+      
+      <img className={styles.background} src={Caderneta} alt="Caderneta" />
       <div className={styles.card}>
-        <Card radius="md" shadow="sm" p="lg">
+        <Card radius="md" shadow="sm" p="lg" className={styles.cardComponent}>
           <form onSubmit={form.onSubmit(login)}>
             <TextInput
               withAsterisk
@@ -77,13 +81,14 @@ export default function Login() {
               withAsterisk
               {...form.getInputProps("password")}
             />
+
             <Button
-              gradient={{ from: "#2256f2", to: "#4674FF" }}
               fullWidth
               mt="md"
               radius="md"
               loading={isLoading}
               type="submit"
+              className={styles.botao}
             >
               Entrar
             </Button>
