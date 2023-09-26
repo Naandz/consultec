@@ -1,5 +1,5 @@
-import style from "./clienteFisica.module.css";
-import { Flex, Switch, Button, Input } from "@mantine/core";
+import { Button, Flex, Switch } from "@mantine/core";
+import style from "./ClienteFisica.module.css";
 
 export default function clienteFisica() {
   return (
