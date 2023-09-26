@@ -1,5 +1,5 @@
 import api from "../api";
-import ApiResponse from "../apiResponse";
+
 import { Clientes } from "./Clientes";
 
 const listaClientes = async () => {
