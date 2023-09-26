@@ -3,7 +3,7 @@ import listaClientes from "../../services/client/listaClientes";
 import { DataTable } from "mantine-datatable";
 
 export default function Juridica() {
-  const { data, isFetching, isRefetching } = useQuery({
+  const { data } = useQuery({
     queryKey: ["client"],
     queryFn: async () => listaClientes(),
   });
@@ -17,8 +17,8 @@ export default function Juridica() {
         highlightOnHover
         horizontalSpacing="xs"
         verticalAlignment="center"
-        fetching={isFetching || isRefetching}
-        records={data?.data || []}
+        records={data}
+        idAccessor='_id'
         columns={[
           { accessor: "numero", title: "Nº", textAlignment: "center" },
           { accessor: "fantasia", title: "Fantasia", textAlignment: "center" },
