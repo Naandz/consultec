@@ -8,17 +8,16 @@ import {
   Header,
   MediaQuery,
   NavLink,
-  Title,
-  useMantineTheme,
+  useMantineTheme
 } from "@mantine/core";
 import { useState } from "react";
+import { AiFillFileAdd } from "react-icons/ai";
+import { BsFileEarmarkPersonFill } from "react-icons/bs";
+import { FaBalanceScale } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../stores/useAuthStore";
 import consultec from '../../assets/CONSULTEC.svg';
-import { AiFillFileAdd } from "react-icons/ai";
-import { FaBalanceScale } from "react-icons/fa";
-import { BsFileEarmarkPersonFill } from "react-icons/bs";
+import { useAuthStore } from "../../stores/useAuthStore";
 export default function Home() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);

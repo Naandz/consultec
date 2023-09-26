@@ -1,7 +1,7 @@
 import styles from "./Login.module.css";
 
-import { Button, Card, PasswordInput, TextInput, Text } from "@mantine/core";
-import { useForm, isNotEmpty } from "@mantine/form";
+import { Button, Card, PasswordInput, TextInput } from "@mantine/core";
+import { isNotEmpty, useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
