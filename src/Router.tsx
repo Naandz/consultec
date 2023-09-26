@@ -8,11 +8,11 @@ import {
 
 import CadastroFisica from "./pages/Cadastro/Fisica/CadastroFisica";
 import CadastroJuridica from "./pages/Cadastro/Juridica/CadastroJuridica";
+import ClienteFisica from "./pages/Cliente/Fisica/ClienteFisica";
 import Fisica from "./pages/Fisica/Fisica";
 import Home from "./pages/Home/Home";
 import Juridica from "./pages/Juridica/Juridica";
 import Login from "./pages/Login/Login";
-import ClienteFisica from "./pages/Cliente/Fisica/ClienteFisica";
 import { useAuthStore } from "./stores/useAuthStore";
 
 const AuthRoute = () => {
