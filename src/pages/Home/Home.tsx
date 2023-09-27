@@ -71,7 +71,7 @@ export default function Home() {
                 mr="xl"
               />
             </MediaQuery>
-            <img src={consultec} alt="" />
+            <img src={consultec} alt="logo da consultec" onClick={() => navigate("/")} className={styles.logo}/>
             <Flex>
               <Group spacing={5}>
                 <Flex>
