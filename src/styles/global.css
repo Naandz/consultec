@@ -9,3 +9,7 @@ body {
   background-color: #f2f2f2;
 }
 
+.botao {
+  background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+}

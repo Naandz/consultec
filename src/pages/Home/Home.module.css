@@ -26,3 +26,6 @@
 .iten:hover {
   background-color: #4674ff;
 }
+.logo{
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import { Input, Flex, Switch, Button } from "@mantine/core";
+import { Button, Flex, Input, Switch } from "@mantine/core";
 import style from "./Cadastro.module.css";
 
 export default function CadastroJuridica() {
@@ -140,7 +140,7 @@ export default function CadastroJuridica() {
               </div>
             </Flex>
           </Flex>
-          <Button fullWidth className={style.botao}>
+          <Button fullWidth className="botao">
             Salvar
           </Button>
         </Flex>
