@@ -1,5 +1,5 @@
 import { Button, Flex, Switch } from "@mantine/core";
-import style from "./clienteFisica.module.css";
+import style from "./ClienteFisica.module.css";
 
 export default function ClienteFisica() {
   return (
@@ -15,9 +15,7 @@ export default function ClienteFisica() {
               </Flex>
               <div>
                 <label> Nome</label>
-                <div className={style.dados}>
-                  
-                </div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> CPF</label>
