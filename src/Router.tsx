@@ -52,12 +52,16 @@ export function Router() {
             element={<ProtectedRoute outlet={<Fisica />} />}
           />
           <Route
-            path="/cadastro/fisica"
-            element={<ProtectedRoute outlet={<CadastroFisica />} />}
+            path="/cadastro/juridica"
+            element={<ProtectedRoute outlet={<CadastroJuridica />} />}
           />
           <Route
             path="/cadastro/juridica"
             element={<ProtectedRoute outlet={<CadastroJuridica />} />}
+          />
+          <Route
+            path="/cadastro/fisica"
+            element={<ProtectedRoute outlet={<CadastroFisica />} />}
           />
           <Route
             path="/cliente/fisica/clientefisica"
