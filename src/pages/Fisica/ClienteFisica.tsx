@@ -1,7 +1,7 @@
-import { Button, Flex, Switch } from "@mantine/core";
-import style from "./ClienteFisica.module.css";
+import style from "./clienteFisica.module.css";
+import { Flex, Switch, Button } from "@mantine/core";
 
-export default function clienteFisica() {
+export default function ClienteFisica() {
   return (
     <div>
       <Flex justify="center" align="start">
@@ -16,32 +16,32 @@ export default function clienteFisica() {
               <div>
                 <label> Nome</label>
                 <div className={style.dados}>
-                  Gabryel Kadmo Santos de Lucena
+                  
                 </div>
               </div>
               <div>
                 <label> CPF</label>
-                <div className={style.dados}>258.789.741-86</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> Ramo de Atividade</label>
-                <div className={style.dados}>Desenvolvedor</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> CEP</label>
-                <div className={style.dados}>69980-000</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> Bairro</label>
-                <div className={style.dados}>Jardim Primavera</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> logradouro</label>
-                <div className={style.dados}>Rua Santos Barbosa</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> Usuário Sefaz</label>
-                <div className={style.dados}>Kadmon59</div>
+                <div className={style.dados}></div>
               </div>
             </Flex>
 
@@ -59,31 +59,31 @@ export default function clienteFisica() {
               </Flex>
               <div>
                 <label> Apelido</label>
-                <div className={style.dados}>Kadmo</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> Telefone</label>
-                <div className={style.dados}>(73) 98843-6959</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> E-mail</label>
-                <div className={style.dados}>gabryel.kadmo@gmail.com</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> Cidade</label>
-                <div className={style.dados}>Cruzeiro do Sul</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> Estado</label>
-                <div className={style.dados}>Acre</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> Numero</label>
-                <div className={style.dados}>123</div>
+                <div className={style.dados}></div>
               </div>
               <div>
                 <label> Senha Sefaz</label>
-                <div className={style.dados}>kadmo123</div>
+                <div className={style.dados}></div>
               </div>
             </Flex>
           </Flex>
