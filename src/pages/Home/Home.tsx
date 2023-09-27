@@ -8,7 +8,9 @@ import {
   Header,
   MediaQuery,
   NavLink,
-  useMantineTheme
+  useMantineTheme,
+  Modal,
+  Button,
 } from "@mantine/core";
 import { useState } from "react";
 import { AiFillFileAdd } from "react-icons/ai";
@@ -16,11 +18,13 @@ import { BsFileEarmarkPersonFill } from "react-icons/bs";
 import { FaBalanceScale } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import consultec from '../../assets/CONSULTEC.svg';
+import consultec from "../../assets/CONSULTEC.svg";
+import { useDisclosure } from "@mantine/hooks";
 import { useAuthStore } from "../../stores/useAuthStore";
 export default function Home() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
+  const [openedModal, { open, close }] = useDisclosure(false);
 
   const navigate = useNavigate();
   const authStore = useAuthStore();
@@ -40,11 +44,6 @@ export default function Home() {
       label: "Física",
       icon: BsFileEarmarkPersonFill,
       path: "/fisica",
-    },
-    {
-      label: "Cadastro",
-      icon: AiFillFileAdd,
-      path: "/cadastro/juridica",
     },
   ];
 
@@ -71,7 +70,12 @@ export default function Home() {
                 mr="xl"
               />
             </MediaQuery>
-            <img src={consultec} alt="logo da consultec" onClick={() => navigate("/")} className={styles.logo}/>
+            <img
+              src={consultec}
+              alt="logo da consultec"
+              onClick={() => navigate("/")}
+              className={styles.logo}
+            />
             <Flex>
               <Group spacing={5}>
                 <Flex>
@@ -79,13 +83,19 @@ export default function Home() {
                     <NavLink
                       key={item.label}
                       label={item.label}
-                      icon={<item.icon/>}
+                      icon={<item.icon />}
                       component={Link}
                       to={item.path}
                       onClick={() => setOpened(false)}
                       className={styles.iten}
                     />
                   ))}
+                  <NavLink
+                    label="Cadastro"
+                    icon={<AiFillFileAdd />}
+                    onClick={open}
+                    className={styles.iten}
+                  />
                 </Flex>
               </Group>
               <NavLink
@@ -99,6 +109,38 @@ export default function Home() {
       }
     >
       <Outlet />
+      <Modal
+        opened={openedModal}
+        onClose={close}
+        title="Selecione o tipo do cliente"
+        
+      >
+        <Flex justify="center" align="center" gap="xl">
+          <Button
+            className="botao"
+            fullWidth
+            size="md"
+            onClick={() => {
+              close()
+              navigate("/cadastro/juridica");
+            }}
+          >
+            Júridico
+          </Button>
+          <Button
+            className="botao"
+            fullWidth
+            size="md"
+            onClick={() => {
+              close()
+              navigate("/cadastro/fisica");
+            }}
+            
+          >
+            Físico
+          </Button>
+        </Flex>
+      </Modal>
     </AppShell>
   );
 }
