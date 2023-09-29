@@ -29,3 +29,14 @@
 .logo{
   cursor: pointer;
 }
+.navbar{
+  background-color: #f2f2f2;
+  width: 100%;
+}
+.toggle{
+  flex-direction: column;
+}
+
+.itenToggle{
+  color: black;
+}
