@@ -3,24 +3,29 @@ import styles from "./Home.module.css";
 import {
   AppShell,
   Burger,
+  Button,
   Flex,
   Group,
   Header,
   MediaQuery,
+  Modal,
   NavLink,
+  Navbar,
   useMantineTheme
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
 import { AiFillFileAdd } from "react-icons/ai";
 import { BsFileEarmarkPersonFill } from "react-icons/bs";
 import { FaBalanceScale } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import consultec from '../../assets/CONSULTEC.svg';
+import consultec from "../../assets/CONSULTEC.svg";
 import { useAuthStore } from "../../stores/useAuthStore";
 export default function Home() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
+  const [openedModal, { open, close }] = useDisclosure(false);
 
   const navigate = useNavigate();
   const authStore = useAuthStore();
@@ -30,9 +35,10 @@ export default function Home() {
     navigate("/session/login");
   };
 
+
   const itensMenu = [
     {
-      label: "Júridica",
+      label: "Jurídica",
       icon: FaBalanceScale,
       path: "/juridica",
     },
@@ -40,11 +46,6 @@ export default function Home() {
       label: "Física",
       icon: BsFileEarmarkPersonFill,
       path: "/fisica",
-    },
-    {
-      label: "Cadastro",
-      icon: AiFillFileAdd,
-      path: "/cadastro/juridica",
     },
   ];
 
@@ -71,23 +72,36 @@ export default function Home() {
                 mr="xl"
               />
             </MediaQuery>
-            <img src={consultec} alt="" />
+            <img
+              src={consultec}
+              alt="logo da consultec"
+              onClick={() => navigate("/")}
+              className={styles.logo}
+            />
             <Flex>
-              <Group spacing={5}>
-                <Flex>
-                  {itensMenu.map((item) => (
+              <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+                <Group spacing={5}>
+                  <Flex>
+                    {itensMenu.map((item) => (
+                      <NavLink
+                        key={item.label}
+                        label={item.label}
+                        icon={<item.icon />}
+                        component={Link}
+                        to={item.path}
+                        onClick={() => setOpened(false)}
+                        className={styles.iten}
+                      />
+                    ))}
                     <NavLink
-                      key={item.label}
-                      label={item.label}
-                      icon={<item.icon/>}
-                      component={Link}
-                      to={item.path}
-                      onClick={() => setOpened(false)}
+                      label="Cadastro"
+                      icon={<AiFillFileAdd />}
+                      onClick={open}
                       className={styles.iten}
                     />
-                  ))}
-                </Flex>
-              </Group>
+                  </Flex>
+                </Group>
+              </MediaQuery>
               <NavLink
                 icon={<TbLogout />}
                 onClick={logout}
@@ -97,8 +111,71 @@ export default function Home() {
           </div>
         </Header>
       }
+      navbar={
+        <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+          <Navbar
+            hiddenBreakpoint="sm"
+            hidden={!opened}
+            className={styles.navbar}
+          >
+            <Navbar.Section>
+              <Flex className={styles.toggle}>
+              {itensMenu.map((item) => (
+                <NavLink
+                  key={item.label}
+                  label={item.label}
+                  icon={<item.icon />}
+                  component={Link}
+                  to={item.path}
+                  onClick={() => setOpened(false)}
+                  className={styles.itenToggle}
+                />
+              ))}
+              <NavLink
+                label="Cadastro"
+                icon={<AiFillFileAdd />}
+                onClick={open}
+                className={styles.itenToggle}
+              />
+              </Flex>
+            </Navbar.Section>
+          </Navbar>
+        </MediaQuery>
+      }
     >
       <Outlet />
+      <Modal
+        opened={openedModal}
+        onClose={close}
+        title="Selecione o tipo do cliente"
+      >
+        <Flex justify="center" align="center" gap="xl">
+          <Button
+            className="botao"
+            fullWidth
+            size="md"
+            onClick={() => {
+              setOpened(false)
+              close();
+              navigate("/cadastro/juridica");
+            }}
+          >
+            Júridico
+          </Button>
+          <Button
+            className="botao"
+            fullWidth
+            size="md"
+            onClick={() => {
+              setOpened(false)
+              close();
+              navigate("/cadastro/fisica");
+            }}
+          >
+            Físico
+          </Button>
+        </Flex>
+      </Modal>
     </AppShell>
   );
 }

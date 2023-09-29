@@ -6,13 +6,14 @@ import {
   Routes,
 } from "react-router-dom";
 
-import CadastroFisica from "./pages/Cadastro/Fisica/CadastroFisica";
-import CadastroJuridica from "./pages/Cadastro/Juridica/CadastroJuridica";
-import ClienteFisica from "./pages/Cliente/Fisica/ClienteFisica";
+import CadastroFisica from "./pages/Fisica/CadastroFisica";
+import CadastroJuridica from "./pages/Juridica/CadastroJuridica";
 import Fisica from "./pages/Fisica/Fisica";
 import Home from "./pages/Home/Home";
 import Juridica from "./pages/Juridica/Juridica";
 import Login from "./pages/Login/Login";
+import ClienteFisica from "./pages/Fisica/ClienteFisica";
+import ClienteJuridico from "./pages/Juridica/ClienteJuridico";
 import { useAuthStore } from "./stores/useAuthStore";
 
 const AuthRoute = () => {
@@ -26,7 +27,7 @@ const AuthRoute = () => {
 };
 
 function ProtectedRoute({ outlet }: { outlet: JSX.Element }) {
-  const { access_token } = useAuthStore.getState();
+  const { access_token } = useAuthStore.getState(); 
 
   if (!access_token) {
     return <Navigate to="/session/login" />;
@@ -51,16 +52,24 @@ export function Router() {
             element={<ProtectedRoute outlet={<Fisica />} />}
           />
           <Route
-            path="/cadastro/fisica"
-            element={<ProtectedRoute outlet={<CadastroFisica />} />}
+            path="/cadastro/juridica"
+            element={<ProtectedRoute outlet={<CadastroJuridica />} />}
           />
           <Route
             path="/cadastro/juridica"
             element={<ProtectedRoute outlet={<CadastroJuridica />} />}
           />
           <Route
-            path="/cliente/fisica/clienteFisica"
+            path="/cadastro/fisica"
+            element={<ProtectedRoute outlet={<CadastroFisica />} />}
+          />
+          <Route
+            path="/cliente/fisica/clientefisica"
             element={<ProtectedRoute outlet={<ClienteFisica />} />}
+          />
+          <Route
+            path="/cliente/juridica/clientejuridico"
+            element={<ProtectedRoute outlet={<ClienteJuridico />} />}
           />
         </Route>
       </Routes>
