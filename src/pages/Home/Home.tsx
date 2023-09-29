@@ -11,6 +11,7 @@ import {
   useMantineTheme,
   Modal,
   Button,
+  Navbar,
 } from "@mantine/core";
 import { useState } from "react";
 import { AiFillFileAdd } from "react-icons/ai";
@@ -77,27 +78,29 @@ export default function Home() {
               className={styles.logo}
             />
             <Flex>
-              <Group spacing={5}>
-                <Flex>
-                  {itensMenu.map((item) => (
+              <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+                <Group spacing={5}>
+                  <Flex>
+                    {itensMenu.map((item) => (
+                      <NavLink
+                        key={item.label}
+                        label={item.label}
+                        icon={<item.icon />}
+                        component={Link}
+                        to={item.path}
+                        onClick={() => setOpened(false)}
+                        className={styles.iten}
+                      />
+                    ))}
                     <NavLink
-                      key={item.label}
-                      label={item.label}
-                      icon={<item.icon />}
-                      component={Link}
-                      to={item.path}
-                      onClick={() => setOpened(false)}
+                      label="Cadastro"
+                      icon={<AiFillFileAdd />}
+                      onClick={open}
                       className={styles.iten}
                     />
-                  ))}
-                  <NavLink
-                    label="Cadastro"
-                    icon={<AiFillFileAdd />}
-                    onClick={open}
-                    className={styles.iten}
-                  />
-                </Flex>
-              </Group>
+                  </Flex>
+                </Group>
+              </MediaQuery>
               <NavLink
                 icon={<TbLogout />}
                 onClick={logout}
@@ -107,13 +110,41 @@ export default function Home() {
           </div>
         </Header>
       }
+      navbar={
+        <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+          <Navbar
+            hiddenBreakpoint="sm"
+            hidden={!opened}
+            className={styles.navbar}
+          >
+            <Navbar.Section>
+              {itensMenu.map((item) => (
+                <NavLink
+                  key={item.label}
+                  label={item.label}
+                  icon={<item.icon />}
+                  component={Link}
+                  to={item.path}
+                  onClick={() => setOpened(false)}
+                  className={styles.iten}
+                />
+              ))}
+              <NavLink
+                label="Cadastro"
+                icon={<AiFillFileAdd />}
+                onClick={open}
+                className={styles.iten}
+              />
+            </Navbar.Section>
+          </Navbar>
+        </MediaQuery>
+      }
     >
       <Outlet />
       <Modal
         opened={openedModal}
         onClose={close}
         title="Selecione o tipo do cliente"
-        
       >
         <Flex justify="center" align="center" gap="xl">
           <Button
@@ -121,7 +152,7 @@ export default function Home() {
             fullWidth
             size="md"
             onClick={() => {
-              close()
+              close();
               navigate("/cadastro/juridica");
             }}
           >
@@ -132,10 +163,9 @@ export default function Home() {
             fullWidth
             size="md"
             onClick={() => {
-              close()
+              close();
               navigate("/cadastro/fisica");
             }}
-            
           >
             Físico
           </Button>
