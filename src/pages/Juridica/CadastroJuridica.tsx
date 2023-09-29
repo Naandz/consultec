@@ -1,37 +1,103 @@
 import { Button, Flex, Input, Switch } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import style from "./Cadastro.module.css";
+import cadastraCliente from "../../services/client/cadastraClientes";
 
 export default function CadastroJuridica() {
   const form = useForm({
     initialValues: {
+      bairro: "",
+      cep: "",
+      cgc: "",
+      cidade: "",
       contrato: "",
-      razaoSocial: "",
-      cnpj: "",
+      email: "",
+      estado: "",
+      fantasia: "",
+      logradouro: "",
+      numero: "",
+      passsefaz: "",
       ramoatividade: "",
+      razaosocial: "",
+      telefone: "",
+      usursefaz: "",
     },
     validate: {
+      bairro: isNotEmpty("Bairro"),
+      cep: isNotEmpty("CEP"),
+      cgc: isNotEmpty("CNPJ"),
+      cidade: isNotEmpty("Cidade"),
       contrato: isNotEmpty("Contrato"),
-      razaoSocial: isNotEmpty("Razão Social"),
-      cnpj: isNotEmpty("CNPJ"),
+      email: isNotEmpty("E-mail"),
+      estado: isNotEmpty("Estado"),
+      fantasia: isNotEmpty("Fantasia"),
+      logradouro: isNotEmpty("Logradouro"),
+      numero: isNotEmpty("Número"),
+      passsefaz: isNotEmpty("Senha"),
       ramoatividade: isNotEmpty("Ramo de Atividade"),
+      razaosocial: isNotEmpty("Razão Social"),
+      telefone: isNotEmpty("Telefone"),
+      usursefaz: isNotEmpty("Usuário"),
     },
   });
 
   const cadastra = async ({
+    bairro,
+    cep,
+    cgc,
+    cidade,
     contrato,
-    razaoSocial,
-    cnpj,
+    email,
+    estado,
+    fantasia,
+    logradouro,
+    numero,
+    passsefaz,
     ramoatividade,
+    razaosocial,
+    telefone,
+    usursefaz,
   }: {
+    bairro: string;
+    cep: string;
+    cgc: string;
+    cidade: string;
     contrato: string;
-    razaoSocial: string;
-    cnpj: string;
+    email: string;
+    estado: string;
+    fantasia: string;
+    logradouro: string;
+    numero: string;
+    passsefaz: string;
     ramoatividade: string;
+    razaosocial: string;
+    telefone: string;
+    usursefaz: string;
   }) => {
-    console.log({ contrato, razaoSocial, cnpj, ramoatividade });
-  };
+    try {
+      await cadastraCliente({
+        bairro,
+        cep,
+        cgc,
+        cidade,
+        contrato,
+        email,
+        estado,
+        fantasia,
+        logradouro,
+        numero,
+        passsefaz,
+        ramoatividade,
+        razaosocial,
+        telefone,
+        usursefaz,
+      });
 
+      form.reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <form onSubmit={form.onSubmit(cadastra)}>
@@ -55,7 +121,7 @@ export default function CadastroJuridica() {
                     name="Razão Social"
                     placeholder="Informe a razão social"
                     className={style.inputCamp}
-                    {...form.getInputProps("razaoSocial")}
+                    {...form.getInputProps("razaosocial")}
                   />
                 </div>
                 <div>
@@ -64,7 +130,7 @@ export default function CadastroJuridica() {
                     name="CNPJ"
                     placeholder="Informe o CNPJ"
                     className={style.inputCamp}
-                    {...form.getInputProps("cnpj")}
+                    {...form.getInputProps("cgc")}
                   />
                 </div>
                 <div>
@@ -82,6 +148,7 @@ export default function CadastroJuridica() {
                     name="CEP"
                     placeholder="Informe o CEP"
                     className={style.inputCamp}
+                    {...form.getInputProps("cep")}
                   />
                 </div>
                 <div>
@@ -90,6 +157,7 @@ export default function CadastroJuridica() {
                     name="Bairro"
                     placeholder="Informe o Bairro"
                     className={style.inputCamp}
+                    {...form.getInputProps("bairro")}
                   />
                 </div>
                 <div>
@@ -98,6 +166,7 @@ export default function CadastroJuridica() {
                     name="logradouro"
                     placeholder="Informe o logradouro"
                     className={style.inputCamp}
+                    {...form.getInputProps("logradouro")}
                   />
                 </div>
                 <div>
@@ -106,6 +175,7 @@ export default function CadastroJuridica() {
                     name="Usuário Sefaz"
                     placeholder="Login"
                     className={style.inputCamp}
+                    {...form.getInputProps("usursefaz")}
                   />
                 </div>
               </Flex>
@@ -127,6 +197,7 @@ export default function CadastroJuridica() {
                     name="Nome Fantasia"
                     placeholder="Informe o nome fantasia"
                     className={style.inputCamp}
+                    {...form.getInputProps("fantasia")}
                   />
                 </div>
                 <div>
@@ -135,6 +206,7 @@ export default function CadastroJuridica() {
                     name="Telefone"
                     placeholder="Informe o telefone"
                     className={style.inputCamp}
+                    {...form.getInputProps("telefone")}
                   />
                 </div>
                 <div>
@@ -143,6 +215,7 @@ export default function CadastroJuridica() {
                     name="E-mail"
                     placeholder="Informe o e-mail"
                     className={style.inputCamp}
+                    {...form.getInputProps("email")}
                   />
                 </div>
                 <div>
@@ -151,6 +224,7 @@ export default function CadastroJuridica() {
                     name="Cidade"
                     placeholder="Informe o cidade"
                     className={style.inputCamp}
+                    {...form.getInputProps("cidade")}
                   />
                 </div>
                 <div>
@@ -159,6 +233,7 @@ export default function CadastroJuridica() {
                     name="Estado"
                     placeholder="Informe o estado"
                     className={style.inputCamp}
+                    {...form.getInputProps("estado")}
                   />
                 </div>
                 <div>
@@ -167,6 +242,7 @@ export default function CadastroJuridica() {
                     name="Numero"
                     placeholder="Informe o numero"
                     className={style.inputCamp}
+                    {...form.getInputProps("numero")}
                   />
                 </div>
                 <div>
@@ -175,6 +251,7 @@ export default function CadastroJuridica() {
                     name="Senha Sefaz"
                     placeholder="Senha"
                     className={style.inputCamp}
+                    {...form.getInputProps("passsefaz")}
                   />
                 </div>
               </Flex>
