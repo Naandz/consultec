@@ -3,16 +3,17 @@ import styles from "./Home.module.css";
 import {
   AppShell,
   Burger,
+  Button,
   Flex,
   Group,
   Header,
   MediaQuery,
-  NavLink,
-  useMantineTheme,
   Modal,
-  Button,
+  NavLink,
   Navbar,
+  useMantineTheme,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
 import { AiFillFileAdd } from "react-icons/ai";
 import { BsFileEarmarkPersonFill } from "react-icons/bs";
@@ -20,7 +21,6 @@ import { FaBalanceScale } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import consultec from "../../assets/CONSULTEC.svg";
-import { useDisclosure } from "@mantine/hooks";
 import { useAuthStore } from "../../stores/useAuthStore";
 export default function Home() {
   const theme = useMantineTheme();
