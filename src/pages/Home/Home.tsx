@@ -11,7 +11,7 @@ import {
   Modal,
   NavLink,
   Navbar,
-  useMantineTheme,
+  useMantineTheme
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
@@ -35,9 +35,10 @@ export default function Home() {
     navigate("/session/login");
   };
 
+
   const itensMenu = [
     {
-      label: "Júridica",
+      label: "Jurídica",
       icon: FaBalanceScale,
       path: "/juridica",
     },
@@ -118,6 +119,7 @@ export default function Home() {
             className={styles.navbar}
           >
             <Navbar.Section>
+              <Flex className={styles.toggle}>
               {itensMenu.map((item) => (
                 <NavLink
                   key={item.label}
@@ -126,15 +128,16 @@ export default function Home() {
                   component={Link}
                   to={item.path}
                   onClick={() => setOpened(false)}
-                  className={styles.iten}
+                  className={styles.itenToggle}
                 />
               ))}
               <NavLink
                 label="Cadastro"
                 icon={<AiFillFileAdd />}
                 onClick={open}
-                className={styles.iten}
+                className={styles.itenToggle}
               />
+              </Flex>
             </Navbar.Section>
           </Navbar>
         </MediaQuery>
@@ -152,6 +155,7 @@ export default function Home() {
             fullWidth
             size="md"
             onClick={() => {
+              setOpened(false)
               close();
               navigate("/cadastro/juridica");
             }}
@@ -163,6 +167,7 @@ export default function Home() {
             fullWidth
             size="md"
             onClick={() => {
+              setOpened(false)
               close();
               navigate("/cadastro/fisica");
             }}
