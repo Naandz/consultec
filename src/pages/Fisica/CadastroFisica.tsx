@@ -1,15 +1,114 @@
 import { Button, Flex, Input, Switch } from "@mantine/core";
+import { isNotEmpty, useForm } from "@mantine/form";
 import style from "./Cadastro.module.css";
+import cadastraCliente from "../../services/client/cadastraClientes";
 
 export default function CadastroFisica() {
+  const form = useForm({
+    initialValues: {
+      nome: "",
+      cgc: "",
+      apelido: "",
+      telefone: "",
+      email: "",
+      cep: "",
+      cidade: "",
+      estado: "",
+      numero: "",
+      bairro: "",
+      ramodeatividade: "",
+      logradouro: "",
+      usursefaz: "",
+      passsefaz: "",
+      contrato: "",
+    },
+    validate:{  
+      nome: isNotEmpty("O campo de nome não pode ser vazio"),
+      cgc: isNotEmpty("O campo de cgc não pode ser vazio"),
+      apelido: isNotEmpty("O campo de apelido não pode ser vazio"),
+      telefone: isNotEmpty("O campo de telefone não pode ser vazio"),  
+      email: isNotEmpty("O campo de email não pode ser vazio"),
+      cidade: isNotEmpty("O campo de cidade não pode ser vazio"),
+      cep: isNotEmpty("O campo de cep não pode ser vazio"),
+      estado: isNotEmpty("O campo de estado não pode ser vazio"),
+      bairro: isNotEmpty("O campo de bairro não pode ser vazio"),
+      numero: isNotEmpty("O campo de numero não pode ser vazio"),
+      ramodeatividade: isNotEmpty("O campo de atividades não pode ser vazio"),
+      logradouro: isNotEmpty("O campo de logradouro não pode ser vazio"),
+      usursefaz: isNotEmpty("O campo de usuario não pode ser vazio"),
+      passsefaz: isNotEmpty("O campo de senha não pode ser vazio"),
+      contrato: isNotEmpty("O campo de contrato não pode ser vazio"),
+    }
+  });
+
+  const cadastra = async({
+    nome,
+    cgc,
+    apelido,
+    telefone,
+    email,
+    cep,
+    cidade,
+    estado,
+    bairro,
+    numero,
+    ramodeatividade,
+    logradouro,
+    usursefaz,
+    passsefaz,
+    contrato,
+  }: {
+    nome: string;
+    cgc: string;
+    apelido: string;
+    telefone: string;
+    email: string;
+    cep: string;
+    cidade: string;
+    estado: string;
+    bairro: string;
+    numero: string;
+    ramodeatividade: string;
+    logradouro: string;
+    usursefaz: string;
+    passsefaz: string;
+    contrato: string;
+  }) => {
+    try{
+      await cadastraCliente({
+        nome,
+        cgc,
+        apelido,
+        telefone,
+        email,
+        cep,
+        cidade,
+        estado,
+        bairro,
+        numero,
+        ramodeatividade,
+        logradouro,
+        usursefaz,
+        passsefaz,
+        contrato,
+      });
+      form.reset();
+    } catch (error){
+      console.log(error);
+    }
+  };
   return (
     <div>
+      <form onSubmit={form.onSubmit(cadastra)}>
       <Flex justify="center" align="start">
       <Flex justify="center" align="center" direction='column' rowGap='xl'>
         <Flex columnGap="5em" rowGap="xs" direction="row" wrap="wrap">
           <Flex justify="center" align="start" gap="xs" direction="column">
-            <Flex>
-              <Switch.Group label="Contrato" withAsterisk size="sm">
+            <Flex>           
+              <Switch.Group label="Contrato" 
+              withAsterisk 
+              size="sm"
+              {...form.getInputProps("contrato")}>
                 <Switch value="Contrato" />
               </Switch.Group>
             </Flex>
@@ -19,6 +118,7 @@ export default function CadastroFisica() {
                 name="Nome"
                 placeholder="Informe o nome"
                 className={style.inputCamp}
+                {...form.getInputProps("nome")}
               />
             </div>
             <div>
@@ -27,6 +127,7 @@ export default function CadastroFisica() {
                 name="CPF"
                 placeholder="Informe o CPF"
                 className={style.inputCamp}
+                {...form.getInputProps("cgc")}
               />
             </div>
             <div>
@@ -35,6 +136,7 @@ export default function CadastroFisica() {
                 name="Ramo de Atividade"
                 placeholder="Informe o ramo de atividade"
                 className={style.inputCamp}
+                {...form.getInputProps("ramodeatividade")}
               />
             </div>
             <div>
@@ -43,6 +145,7 @@ export default function CadastroFisica() {
                 name="CEP"
                 placeholder="Informe o CEP"
                 className={style.inputCamp}
+                {...form.getInputProps("cep")}
               />
             </div>
             <div>
@@ -51,6 +154,7 @@ export default function CadastroFisica() {
                 name="Bairro"
                 placeholder="Informe o Bairro"
                 className={style.inputCamp}
+                {...form.getInputProps("bairro")}
               />
             </div>
             <div>
@@ -59,6 +163,7 @@ export default function CadastroFisica() {
                 name="logradouro"
                 placeholder="Informe o logradouro"
                 className={style.inputCamp}
+                {...form.getInputProps("logradouro")}
               />
             </div>
             <div>
@@ -67,6 +172,7 @@ export default function CadastroFisica() {
                 name="Usuário Sefaz"
                 placeholder="Login"
                 className={style.inputCamp}
+                {...form.getInputProps("usursefaz")}
               />
             </div>
           </Flex>
@@ -88,6 +194,7 @@ export default function CadastroFisica() {
                 name="Apelido"
                 placeholder="Informe o apelido"
                 className={style.inputCamp}
+                {...form.getInputProps("apelido")}
               />
             </div>
             <div>
@@ -96,6 +203,7 @@ export default function CadastroFisica() {
                 name="Telefone"
                 placeholder="Informe o telefone"
                 className={style.inputCamp}
+                {...form.getInputProps("telefone")}
               />
             </div>
             <div>
@@ -104,6 +212,7 @@ export default function CadastroFisica() {
                 name="E-mail"
                 placeholder="Informe o e-mail"
                 className={style.inputCamp}
+                {...form.getInputProps("email")}
               />
             </div>
             <div>
@@ -112,6 +221,7 @@ export default function CadastroFisica() {
                 name="Cidade"
                 placeholder="Informe o cidade"
                 className={style.inputCamp}
+                {...form.getInputProps("cidade")}
               />
             </div>
             <div>
@@ -120,6 +230,7 @@ export default function CadastroFisica() {
                 name="Estado"
                 placeholder="Informe o estado"
                 className={style.inputCamp}
+                {...form.getInputProps("estado")}
               />
             </div>
             <div>
@@ -128,6 +239,7 @@ export default function CadastroFisica() {
                 name="Numero"
                 placeholder="Informe o numero"
                 className={style.inputCamp}
+                {...form.getInputProps("numero")}
               />
             </div>
             <div>
@@ -136,6 +248,7 @@ export default function CadastroFisica() {
                 name="Senha Sefaz"
                 placeholder="Senha"
                 className={style.inputCamp}
+                {...form.getInputProps("passsefaz")}
               />
             </div>
           </Flex>
@@ -143,6 +256,7 @@ export default function CadastroFisica() {
         <Button fullWidth className="botao" >Salvar</Button>
       </Flex>
       </Flex>
+      </form>
     </div>
   );
 }

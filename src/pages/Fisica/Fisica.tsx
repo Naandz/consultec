@@ -21,13 +21,13 @@ export default function Fisica() {
         records={data}
         idAccessor="_id"
         columns={[
-          { accessor: "fantasia", title: "Fantasia", textAlignment: "center" },
+          { accessor: "apelido", title: "Apelido", textAlignment: "center" },
           {
-            accessor: "razaosocial",
-            title: "Razão Social",
+            accessor: "apelido",
+            title: "Apelido",
             textAlignment: "center",
           },
-          { accessor: "cgc", title: "CNPJ", textAlignment: "center" },
+          { accessor: "cgc", title: "CPF", textAlignment: "center" },
           { accessor: "telefone", title: "Tell", textAlignment: "center" },
           { accessor: "contrato", title: "Contrato", textAlignment: "center" },
         ]}
