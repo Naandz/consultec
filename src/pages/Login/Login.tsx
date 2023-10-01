@@ -20,10 +20,11 @@ export default function Login() {
     initialValues: {
       login: "",
       password: "",
-    }, validate: {
-      login: isNotEmpty('Informe um e-mail'),
-      password: isNotEmpty('Informe a senha')
-    }
+    },
+    validate: {
+      login: isNotEmpty("Informe um e-mail"),
+      password: isNotEmpty("Informe a senha"),
+    },
   });
 
   const login = async ({
@@ -62,9 +63,8 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-    
-        <img className={styles.logo} src={LogoMarca} alt="Logo" />
-      
+      <img className={styles.logo} src={LogoMarca} alt="Logo" />
+
       <img className={styles.background} src={Caderneta} alt="Caderneta" />
       <div className={styles.card}>
         <Card radius="md" shadow="sm" p="lg" className={styles.cardComponent}>
