@@ -3,7 +3,7 @@ export type Clientes = {
   apelido?: string;
   bairro?: string;
   cep?: string;
-  cgc?: string;
+  cgc: string;
   cidade?: string;
   contrato?: string;
   email?: string;
