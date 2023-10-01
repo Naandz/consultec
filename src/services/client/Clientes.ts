@@ -1,13 +1,16 @@
 export type Clientes = {
+  nome?: string;
+  apelido?: string;
   bairro?: string;
   cep?: string;
-  cgc?: string;
+  cgc: string;
   cidade?: string;
   contrato?: string;
   email?: string;
   estado?: string;
   pais?: string;
   fantasia?: string;
+  ramodeatividade?: string;
   idcontador?: string;
   logradouro?: string;
   numero?: string;
