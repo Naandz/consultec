@@ -4,7 +4,25 @@ import style from "./Cadastro.module.css";
 import cadastraCliente from "../../services/client/cadastraClientes";
 
 export default function CadastroJuridica() {
-  const form = useForm({
+  interface FormValues {
+    bairro: string;
+    cep: string;
+    cgc: string;
+    cidade: string;
+    contrato: string;
+    email: string;
+    estado: string;
+    fantasia: string;
+    logradouro: string;
+    numero: string;
+    passsefaz: string;
+    ramoatividade: string;
+    razaosocial: string;
+    telefone: string;
+    usursefaz: string;
+  }
+
+  const form = useForm<FormValues>({
     initialValues: {
       bairro: "",
       cep: "",
@@ -41,57 +59,9 @@ export default function CadastroJuridica() {
     },
   });
 
-  const cadastra = async ({
-    bairro,
-    cep,
-    cgc,
-    cidade,
-    contrato,
-    email,
-    estado,
-    fantasia,
-    logradouro,
-    numero,
-    passsefaz,
-    ramoatividade,
-    razaosocial,
-    telefone,
-    usursefaz,
-  }: {
-    bairro: string;
-    cep: string;
-    cgc: string;
-    cidade: string;
-    contrato: string;
-    email: string;
-    estado: string;
-    fantasia: string;
-    logradouro: string;
-    numero: string;
-    passsefaz: string;
-    ramoatividade: string;
-    razaosocial: string;
-    telefone: string;
-    usursefaz: string;
-  }) => {
+  const cadastra = async (values: FormValues) => {
     try {
-      await cadastraCliente({
-        bairro,
-        cep,
-        cgc,
-        cidade,
-        contrato,
-        email,
-        estado,
-        fantasia,
-        logradouro,
-        numero,
-        passsefaz,
-        ramoatividade,
-        razaosocial,
-        telefone,
-        usursefaz,
-      });
+      await cadastraCliente(values);
 
       form.reset();
     } catch (error) {

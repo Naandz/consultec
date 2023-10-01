@@ -2,22 +2,30 @@ import { showNotification } from "@mantine/notifications";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { DataTable } from "mantine-datatable";
-import { useNavigate } from "react-router-dom";
-import Acoes from "../../components/Acoes";
-import deleteClient from "../../services/client/deletaCliente";
-import listaClientes from "../../services/client/listaClientes";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Acoes from "../../../components/Acoes";
+import deleteFuncionario from "../../../services/funcionarios/deletaFuncionario";
+import listaFuncionarios from "../../../services/funcionarios/listaFuncionarios";
 
-export default function Juridica() {
+export default function ListaFuncionarioJuridico() {
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const { data, isFetching, isRefetching, refetch } = useQuery({
-    queryKey: ["client"],
-    queryFn: async () => listaClientes(),
+  const { isError, data, isFetching, isRefetching, refetch } = useQuery({
+    queryKey: ["funcionario"],
+    queryFn: async () => listaFuncionarios(id),
   });
 
-  const exclui = async (cgc: string) => {
+  useEffect(() => {
+    if (isError) {
+      navigate("/juridica");
+    }
+  }, [isError, id]);
+
+  const exclui = async (cpf: string) => {
     try {
-      await deleteClient(cgc);
+      await deleteFuncionario(cpf);
       showNotification({
         title: "Ok",
         message: "Exclusão efetuada com sucesso!",
@@ -49,15 +57,15 @@ export default function Juridica() {
         verticalAlignment="center"
         records={data}
         fetching={isFetching || isRefetching}
-        idAccessor="_id"
+        idAccessor="cpf"
         columns={[
-          { accessor: "fantasia", title: "Fantasia", textAlignment: "center" },
+          { accessor: "cpf", title: "CPF", textAlignment: "center" },
           {
-            accessor: "razaosocial",
-            title: "Razão Social",
+            accessor: "rg",
+            title: "RG",
             textAlignment: "center",
           },
-          { accessor: "cgc", title: "CNPJ", textAlignment: "center" },
+          { accessor: "funcao", title: "Função", textAlignment: "center" },
           { accessor: "telefone", title: "Tell", textAlignment: "center" },
           { accessor: "contrato", title: "Contrato", textAlignment: "center" },
           {
@@ -67,10 +75,10 @@ export default function Juridica() {
             render: (data) => (
               <Acoes
                 acaoDetalhar={() =>
-                  navigate(`/juridica/funcionario/${data.cgc}`)
+                  navigate(`/detalha/funcionarios/${data.cpf}`)
                 }
-                acaoEditar={() => navigate(`/edita/${data.cgc}`)}
-                acaoExcluir={() => exclui(data.cgc)}
+                acaoEditar={() => navigate(`/edita/funcionarios/${data.cpf}`)}
+                acaoExcluir={() => exclui(data.cpf)}
               />
             ),
           },
