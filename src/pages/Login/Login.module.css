@@ -1,37 +1,368 @@
+@media (max-width: 320px) {
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
+  .logoImage {
+    position: fixed;
+    top: 130px; 
+    left: 50%;
+    right: 50%; 
+    transform: translateX(-50%);
+    z-index: 3; 
+    width: 80%; 
+    max-width: 320px; 
+  }
+
+  .background {
+    position: fixed;
+    top: 50px;
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    max-height: 50px;
+    z-index: 1;
+    max-width: 320px; 
+  }
+
+  .cardComponent {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: #F2F2F2;
+    width: 80%; 
+    max-width: 320px; 
+  }
+
+  .botao {
+    background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+    width: 80%; 
+    max-width: 320px; 
+    margin: 20px auto; 
+  }
+
+  .cadernetaImage {
+    width: 140%;
+    margin-left: -19.8%;
+  }
+
 }
 
-/* Estilos para .card */
-.card {
-  margin-left: 4em;
-  position: relative;
-  z-index: 5;
+@media (min-width: 321px) and (max-width: 375px) {
+
+  .logoImage {
+    position: fixed;
+    top: 130px; 
+    left: 50%;
+    right: 50%; 
+    transform: translateX(-50%);
+    z-index: 3; 
+    width: 80%; 
+    max-width: 375px; 
+  }
+
+  .background {
+    position: fixed;
+    top: 25px;
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    max-height: 50px;
+    z-index: 1;
+    max-width: 375px; 
+  }
+
+  .cardComponent {
+    position: fixed;
+    top: 63%;
+    left: 50%;
+    transform: translate(-51%, -50%);
+    z-index: 2;
+    background-color: #F2F2F2;
+    width: 80%; 
+    max-width: 375px; 
+  }
+
+  .botao {
+    background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+    width: 80%; 
+    max-width: 320px; 
+    margin: 20px auto; 
+  }
+
+  .cadernetaImage {
+    width: 130%;
+    margin-left: -15.6%;
+  }
+
 }
 
-.logo {
-  width: 30%;
-  position: relative;
-  z-index: 5;
+@media (min-width: 376px) and (max-width: 425px) {
+
+  .logoImage {
+    position: fixed;
+    top: 130px; 
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    z-index: 3; 
+    width: 80%; 
+    max-width: 425px; 
+  }
+
+  .background {
+    position: fixed;
+    top: 25px;
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    max-height: 50px;
+    z-index: 1;
+    max-width: 425px; 
+  }
+
+  .cardComponent {
+    position: fixed;
+    top: 63%;
+    left: 50%;
+    transform: translate(-51%, -50%);
+    z-index: 2;
+    background-color: #F2F2F2;
+    width: 80%; 
+    max-width: 425px; 
+  }
+
+  .botao {
+    background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+    width: 80%; 
+    max-width: 425px; 
+    margin: 20px auto; 
+  }
+
+  .cadernetaImage {
+    width: 123%;
+    margin-left: -12.5%;
+  }
+
 }
 
-.background {
-  position: absolute;
-  height: 42em;
-  margin-left: 33.3em;
+@media (min-width: 426px) and (max-width: 768px) {
+
+  .logoImage {
+    position: fixed;
+    top: 40%; 
+    left: 30%;
+    right: 50%; 
+    transform: translateX(-50%);
+    z-index: 3; 
+    width: 50%; 
+    max-width: 768px; 
+  }
+
+  .background {
+    position: fixed;
+    top: 80px;
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    max-height: 50px;
+    z-index: 1;
+    max-width: 768px; 
+  }
+
+  .cardComponent {
+    position: fixed;
+    top: 50%;
+    left: 77%;
+    transform: translate(-51%, -50%);
+    z-index: 2;
+    background-color: #F2F2F2;
+    width: 36%; 
+    max-width: 768px; 
+  }
+
+  .botao {
+    background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+    width: 80%; 
+    max-width: 768px; 
+    margin: 20px auto;
+  }
+
+  .cadernetaImage {
+    width: 50%;
+    margin-left: 52%;
+  }
+
 }
 
-.cardComponent {
-  width: 28.125em;
-  height: 21.375em;
-  background-color: #F2F2F2;
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .logoImage {
+    position: fixed;
+    top: 40%; 
+    left: 30%;
+    right: 50%; 
+    transform: translateX(-50%);
+    z-index: 3; 
+    width: 50%; 
+    max-width: 1024px; 
+  }
+
+  .background {
+    position: fixed;
+    top: 80px;
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    max-height: 50px;
+    z-index: 1;
+    max-width: 1024px; 
+  }
+
+  .cardComponent {
+    position: fixed;
+    top: 50%;
+    left: 80%;
+    transform: translate(-51%, -50%);
+    z-index: 2;
+    background-color: #F2F2F2;
+    width: 30%; 
+    max-width: 1024px; 
+  }
+
+  .botao {
+    background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+    width: 80%; 
+    max-width: 1024px; 
+    margin: 20px auto; 
+  }
+
+  .cadernetaImage {
+    width: 40%;
+    margin-left: 60%;
+  }
+
 }
-.botao {
-  background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+  .logoImage {
+    position: fixed;
+    top: 40%; 
+    left: 25%;
+    right: 50%; 
+    transform: translateX(-50%);
+    z-index: 3; 
+    width: 40%; 
+    max-width: 1440px; 
+  }
+
+  .background {
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    height: 100%;
+    max-height: 50px;
+    z-index: 1;
+    max-width: 1440px; 
+  }
+
+  .cardComponent {
+    position: fixed;
+    top: 50%;
+    left: 75%;
+    transform: translate(-51%, -50%);
+    z-index: 2;
+    background-color: #F2F2F2;
+    width: 20%; 
+    max-width: 1440px; 
+  }
+
+  .botao {
+    background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+    width: 80%; 
+    max-width: 1440px; 
+    margin: 20px auto; 
+  }
+
+  .cadernetaImage {
+    width: 30%;
+    margin-left: 60%;
+  }
+
+}
+@media (min-width: 1441px) {
+
+  .logoImage {
+    position: fixed;
+    top: 40%; 
+    left: 35%;
+    right: 50%; 
+    transform: translateX(-50%);
+    z-index: 3; 
+    width: 40%; 
+    max-width: 2560px;
+  }
+  
+  .background {
+    position: fixed;
+    top: 150px;
+    width: 100%;
+    height: 100%;
+    max-height: 50px;
+    z-index: 1;
+    max-width: 2560px; 
+  }
+  
+  .cardComponent {
+    position: fixed;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: #F2F2F2;
+    width: 21%; 
+    height: 30%;
+    max-width: 2560px; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cardComponent form {
+    width: 100%; 
+    height: 85%; 
+}
+
+.cardComponent form input,
+.cardComponent form select,
+.cardComponent form textarea {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    font-size: 20px; 
+}
+
+  .botao {
+    background: linear-gradient(180deg, #2256f2 0%, #4674ff 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+    top: 10%;
+    width: 100%; 
+    max-width: 1440px; 
+    margin: 20px auto; 
+  }
+
+  .cadernetaImage {
+    width: 30%;
+    margin-left: 60%;
+  }
+
 }
