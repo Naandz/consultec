@@ -1,4 +1,4 @@
-@media (min-width: 320px) and (max-width: 600px) {
+@media (min-width: 320px) {
 
   .logoImage {
     position: fixed;
@@ -48,7 +48,7 @@
 
 }
 
-@media (min-width: 800px) and (max-width: 801px) {
+@media (min-width: 800px)  {
 
   .logoImage {
     position: fixed;
@@ -97,7 +97,7 @@
 
 }
 
-@media (min-width: 1024px) and (max-width: 1025px) {
+@media (min-width: 1024px) {
 
   .logoImage {
     position: fixed;
@@ -147,7 +147,7 @@
 }
 
 
-@media (min-width: 1280px) and (max-width: 1281px) {
+@media (min-width: 1280px)  {
 
   .logoImage {
     position: fixed;
@@ -197,7 +197,7 @@
 }
 
 
-@media (min-width: 1360px) and (max-width: 1361px) {
+@media (min-width: 1360px){
 
   .logoImage {
     position: fixed;
@@ -246,7 +246,7 @@
 
 }
 
-@media (min-width: 1440px) and (max-width: 1441px) {
+@media (min-width: 1440px) {
 
   .logoImage {
     position: fixed;
@@ -295,7 +295,7 @@
 
 }
 
-@media (min-width: 1920px) and (max-width: 1921px) {
+@media (min-width: 1920px) {
 
   .logoImage {
     position: fixed;
@@ -344,7 +344,7 @@
 
 }
 
-@media (min-width: 2560px) and (max-width: 2561px) {
+@media (min-width: 2500px) {
 
   .logoImage {
     position: fixed;
