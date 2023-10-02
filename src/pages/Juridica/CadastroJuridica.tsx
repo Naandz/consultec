@@ -2,6 +2,9 @@ import { Button, Flex, Input, Switch } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import style from "./Cadastro.module.css";
 import cadastraCliente from "../../services/client/cadastraClientes";
+import { InputBase } from '@mantine/core';
+import { IMaskInput } from 'react-imask';
+
 
 export default function CadastroJuridica() {
   interface FormValues {
@@ -96,8 +99,10 @@ export default function CadastroJuridica() {
                 </div>
                 <div>
                   <label htmlFor="CPF">CNPJ</label>
-                  <Input
+                  <InputBase<any>
                     name="CNPJ"
+                    component={IMaskInput}
+                    mask="00.000.000/0000-00"
                     placeholder="Informe o CNPJ"
                     className={style.inputCamp}
                     {...form.getInputProps("cgc")}
@@ -114,8 +119,10 @@ export default function CadastroJuridica() {
                 </div>
                 <div>
                   <label htmlFor="CEP">CEP</label>
-                  <Input
+                  <InputBase<any>
                     name="CEP"
+                    component={IMaskInput}
+                    mask="00000-000"
                     placeholder="Informe o CEP"
                     className={style.inputCamp}
                     {...form.getInputProps("cep")}
@@ -172,8 +179,10 @@ export default function CadastroJuridica() {
                 </div>
                 <div>
                   <label htmlFor="Telefone">Telefone</label>
-                  <Input
+                  <InputBase<any>
                     name="Telefone"
+                    component={IMaskInput}
+                    mask="+00 (00) 00000-0000"
                     placeholder="Informe o telefone"
                     className={style.inputCamp}
                     {...form.getInputProps("telefone")}
