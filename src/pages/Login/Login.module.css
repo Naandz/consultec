@@ -419,7 +419,6 @@
     width: 100%; /* Ajuste a largura dos inputs, selects e textareas conforme necessário */
     padding: 15px; /* Ajuste o padding conforme necessário */
     margin-bottom: 10px; /* Ajuste a margem inferior conforme necessário */
-    font-size: 20px; /* Ajuste o tamanho da fonte conforme necessário */
-
+    font-size: 20px; 
   }
 }
