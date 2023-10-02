@@ -23,6 +23,8 @@ export default function CadastroFisica() {
       usursefaz: "",
       passsefaz: "",
       contrato: "",
+      pais: "",
+      cnae: "",
     },
     validate:{  
       nome: isNotEmpty("O campo de nome não pode ser vazio"),
@@ -40,6 +42,8 @@ export default function CadastroFisica() {
       usursefaz: isNotEmpty("O campo de usuario não pode ser vazio"),
       passsefaz: isNotEmpty("O campo de senha não pode ser vazio"),
       contrato: isNotEmpty("O campo de contrato não pode ser vazio"),
+      pais: isNotEmpty("O campo de país não pode ser vazio"),
+      cnae: isNotEmpty("O campo de cnae não pode ser vazio"),
     }
   });
 
@@ -59,6 +63,8 @@ export default function CadastroFisica() {
     usursefaz,
     passsefaz,
     contrato,
+    pais,
+    cnae,
   }: {
     nome: string;
     cgc: string;
@@ -75,6 +81,8 @@ export default function CadastroFisica() {
     usursefaz: string;
     passsefaz: string;
     contrato: string;
+    pais: string;
+    cnae: string;
   }) => {
     try{
       await cadastraCliente({
@@ -93,6 +101,8 @@ export default function CadastroFisica() {
         usursefaz,
         passsefaz,
         contrato,
+        pais,
+        cnae,
       });
       form.reset();
     } catch (error){
@@ -173,6 +183,15 @@ export default function CadastroFisica() {
               />
             </div>
             <div>
+              <label htmlFor="cnae">CNAE</label>
+              <Input
+                name="cnae"
+                placeholder="Informe o cnae"
+                className={style.inputCamp}
+                {...form.getInputProps("cnae")}
+              />
+            </div>
+            <div>
               <label htmlFor="Usuário Sefaz">Usuário Sefaz</label>
               <Input
                 name="Usuário Sefaz"
@@ -239,6 +258,15 @@ export default function CadastroFisica() {
                 placeholder="Informe o estado"
                 className={style.inputCamp}
                 {...form.getInputProps("estado")}
+              />
+            </div>
+            <div>
+              <label htmlFor="pais">País</label>
+              <Input
+                name="pais"
+                placeholder="Informe o País"
+                className={style.inputCamp}
+                {...form.getInputProps("pais")}
               />
             </div>
             <div>

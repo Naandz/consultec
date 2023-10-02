@@ -23,6 +23,8 @@ export default function CadastroJuridica() {
     razaosocial: string;
     telefone: string;
     usursefaz: string;
+    cnae: string;
+    pais: string;
   }
 
   const form = useForm<FormValues>({
@@ -42,6 +44,8 @@ export default function CadastroJuridica() {
       razaosocial: "",
       telefone: "",
       usursefaz: "",
+      cnae: "",
+      pais: "",
     },
     validate: {
       bairro: isNotEmpty("Bairro"),
@@ -59,6 +63,9 @@ export default function CadastroJuridica() {
       razaosocial: isNotEmpty("Razão Social"),
       telefone: isNotEmpty("Telefone"),
       usursefaz: isNotEmpty("Usuário"),
+      cnae: isNotEmpty("Cnae"),
+      pais: isNotEmpty("Pais"),
+
     },
   });
 
@@ -147,6 +154,15 @@ export default function CadastroJuridica() {
                   />
                 </div>
                 <div>
+                  <label htmlFor="cnae">CNAE</label>
+                  <Input
+                    name="cnae"
+                    placeholder="Informe o cnae"
+                    className={style.inputCamp}
+                    {...form.getInputProps("cnae")}
+                  />
+                </div>
+                <div>
                   <label htmlFor="Usuário Sefaz">Usuário Sefaz</label>
                   <Input
                     name="Usuário Sefaz"
@@ -213,6 +229,15 @@ export default function CadastroJuridica() {
                     placeholder="Informe o estado"
                     className={style.inputCamp}
                     {...form.getInputProps("estado")}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="pais">País</label>
+                  <Input
+                    name="pais"
+                    placeholder="Informe o País"
+                    className={style.inputCamp}
+                    {...form.getInputProps("pais")}
                   />
                 </div>
                 <div>
