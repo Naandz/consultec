@@ -1,5 +1,4 @@
 import styles from "./Login.module.css";
-
 import { Button, Card, PasswordInput, TextInput } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
@@ -20,10 +19,11 @@ export default function Login() {
     initialValues: {
       login: "",
       password: "",
-    }, validate: {
+    },
+    validate: {
       login: isNotEmpty('Informe um e-mail'),
-      password: isNotEmpty('Informe a senha')
-    }
+      password: isNotEmpty('Informe a senha'),
+    },
   });
 
   const login = async ({
@@ -61,13 +61,13 @@ export default function Login() {
   };
 
   return (
-    <div className={styles.container}>
-    
-        <img className={styles.logo} src={LogoMarca} alt="Logo" />
+      <div className={styles.background}>
+        <img className={styles.cadernetaImage} src={Caderneta} alt="Caderneta" />
+        <img className={styles.logoImage} src={LogoMarca} alt="Logo" />
       
-      <img className={styles.background} src={Caderneta} alt="Caderneta" />
+  
       <div className={styles.card}>
-        <Card radius="md" shadow="sm" p="lg" className={styles.cardComponent}>
+        <Card radius="md" shadow="sm" p="lg" className={`${styles.cardComponent} ${styles.cardContent}`}>
           <form onSubmit={form.onSubmit(login)}>
             <TextInput
               withAsterisk
@@ -81,7 +81,7 @@ export default function Login() {
               withAsterisk
               {...form.getInputProps("password")}
             />
-
+  
             <Button
               fullWidth
               mt="md"
@@ -95,6 +95,6 @@ export default function Login() {
           </form>
         </Card>
       </div>
-    </div>
+     </div>
   );
 }
