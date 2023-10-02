@@ -51,7 +51,6 @@ export default function Fisica() {
         records={data}
         idAccessor="_id"
         columns={[
-          { accessor: "apelido", title: "Apelido", textAlignment: "center" },
           {
             accessor: "apelido",
             title: "Apelido",
