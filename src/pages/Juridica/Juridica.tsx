@@ -66,11 +66,9 @@ export default function Juridica() {
             textAlignment: "right",
             render: (data) => (
               <Acoes
-                acaoDetalhar={() =>
-                  navigate(`/cliente/juridico/${data.cgc}`)
-                }
-                acaoEditar={() => navigate(`/edita/${data.cgc}`)}
-                acaoExcluir={() => exclui(data.cgc)}
+                acaoDetalhar={() => navigate(`/cliente/juridico/${data._id}`)}
+                acaoEditar={() => navigate(`/edita/${data._id}`)}
+                acaoExcluir={() => exclui(data._id)}
               />
             ),
           },
