@@ -1,8 +1,8 @@
 import api from "../api";
 import { Funcionarios } from "./Funcionarios";
 
-const listaFuncionarios = async (cgc?: string) => {
-  const { data } = await api.get<Funcionarios[]>(`/employees/${cgc}`);
+const listaFuncionarios = async (_id?: string) => {
+  const { data } = await api.get<Funcionarios[]>(`/employees/${_id}`);
   return data;
 };
 
