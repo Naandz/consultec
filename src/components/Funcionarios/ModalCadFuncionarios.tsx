@@ -1,4 +1,5 @@
 import { Button, Flex, Modal, TextInput } from "@mantine/core";
+import { isNotEmpty, useForm } from "@mantine/form";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 
 export default function ModalCadFuncionarios() {
@@ -16,10 +17,15 @@ export default function ModalCadFuncionarios() {
         size="xl"
         fullScreen={isMobile}
       >
-        <Flex gap="xs" wrap="wrap" justify="space-around" direction={isMobile? 'column' : 'row'}>
-          <TextInput label="Nome" size='sm'  placeholder="Informe o nome" />
+        <Flex
+          gap="xs"
+          wrap="wrap"
+          justify="space-around"
+          direction={isMobile ? "column" : "row"}
+        >
+          <TextInput label="Nome" size="sm" placeholder="Informe o nome" />
 
-          <TextInput label="CPF" size="sm" placeholder="000.000.000-00" />
+          <TextInput label="CPF" size="sm" placeholder="000.000.000-00"  />
 
           <TextInput label="RG" size="sm" placeholder="00.000.000-0" />
 
@@ -74,7 +80,6 @@ export default function ModalCadFuncionarios() {
           </Button>
         </Flex>
       </Modal>
-      
     </div>
   );
 }

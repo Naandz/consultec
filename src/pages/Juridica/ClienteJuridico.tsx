@@ -1,7 +1,6 @@
 import { Flex, Title } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { DataTable } from "mantine-datatable";
-import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import EnderecoCliente from "../../components/EnderecoCliente";
 import ListaFuncionarioJuridico from "../../components/Funcionarios/ListaFuncionarioJuridico";
@@ -22,14 +21,14 @@ export default function ClienteJuridico() {
     queryFn: async () => listaClienteById(id),
   });
 
-  const { data: certificados } = useQuery({
+  const {
+    data: certificados,
+    isFetching,
+    isRefetching,
+    refetch,
+  } = useQuery({
     queryKey: ["certificados"],
     queryFn: async () => listaCertificadoById(id),
-  });
-
-  const { data, isFetching, isRefetching } = useQuery({
-    queryKey: ["funcionario"],
-    queryFn: async () => listaFuncionarios(id),
   });
 
   return (
@@ -73,15 +72,15 @@ export default function ClienteJuridico() {
             horizontalSpacing="xl"
             verticalAlignment="center"
             className={style.certificadosTable}
-            records={certificados || []}
             fetching={isFetching || isRefetching}
-            idAccessor="_id"
+            records={certificados || []}
+            idAccessor="nome"
             columns={[
               { accessor: "nome", title: "Nome", textAlignment: "center" },
               { accessor: "senha", title: "Senha", textAlignment: "center" },
               {
                 accessor: "descricao",
-                title: "Descriação",
+                title: "Descrição",
                 textAlignment: "center",
               },
             ]}
@@ -94,7 +93,7 @@ export default function ClienteJuridico() {
             mt="xs"
             className={style.adicionarButton}
           >
-            <ModalCertificado />
+            <ModalCertificado id={id} />
           </Flex>
         </Flex>
         {/* Lista de Funcionários */}
@@ -104,7 +103,7 @@ export default function ClienteJuridico() {
               Funcionários
             </Title>
           </Flex>
-          <ListaFuncionarioJuridico />
+          <ListaFuncionarioJuridico id={id} />
           <Flex
             direction="row"
             justify="flex-end"

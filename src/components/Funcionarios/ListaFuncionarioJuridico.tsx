@@ -2,26 +2,22 @@ import { showNotification } from "@mantine/notifications";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { DataTable } from "mantine-datatable";
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Acoes from "../Acoes";
+import { useNavigate } from "react-router-dom";
 import deleteFuncionario from "../../services/funcionarios/deletaFuncionario";
 import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
+import Acoes from "../Acoes";
 
-export default function ListaFuncionarioJuridico() {
+interface props {
+  id: string;
+}
+
+export default function ListaFuncionarioJuridico({ id }: props) {
   const navigate = useNavigate();
-  const { id } = useParams();
 
-  const { isError, data, isFetching, isRefetching, refetch } = useQuery({
+  const { data, isFetching, isRefetching, refetch } = useQuery({
     queryKey: ["funcionario"],
     queryFn: async () => listaFuncionarios(id),
   });
-
-  useEffect(() => {
-    if (isError) {
-      navigate("/juridica");
-    }
-  }, [isError, id]);
 
   const exclui = async (cpf: string) => {
     try {

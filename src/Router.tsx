@@ -11,11 +11,10 @@ import ClienteFisico from "./pages/Fisica/ClienteFisico";
 import Fisica from "./pages/Fisica/Fisica";
 import Home from "./pages/Home/Home";
 import CadastroJuridica from "./pages/Juridica/CadastroJuridica";
-import ListaFuncionarioJuridico from "./components/Funcionarios/ListaFuncionarioJuridico";
+import ClienteJuridico from "./pages/Juridica/ClienteJuridico";
 import Juridica from "./pages/Juridica/Juridica";
 import Login from "./pages/Login/Login";
 import { useAuthStore } from "./stores/useAuthStore";
-import ClienteJuridico from "./pages/Juridica/ClienteJuridico";
 
 const AuthRoute = () => {
   const { access_token } = useAuthStore.getState();
@@ -51,10 +50,6 @@ export function Router() {
           <Route
             path="/cadastro/juridica"
             element={<ProtectedRoute outlet={<CadastroJuridica />} />}
-          />
-          <Route
-            path="/juridica/funcionario/:id"
-            element={<ProtectedRoute outlet={<ListaFuncionarioJuridico />} />}
           />
           <Route
             path="/fisica"
