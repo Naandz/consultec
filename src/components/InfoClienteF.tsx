@@ -2,17 +2,17 @@ import { Divider, Flex, Text, Title } from "@mantine/core";
 import style from "../pages/Juridica/ClienteJuridico.module.css";
 
 interface InfoClienteProps {
-  Contrato?: string;
-  Fantasia?: string;
-  Razao?: string;
-  Tel?: string;
-  Email?: string;
-  Cgc?: string;
-  Ramo?: string;
-  Cnae?: string;
-  Planos?: string;
+  Contrato: string;
+  Fantasia: string;
+  Razao: string;
+  Tel: string;
+  Email: string;
+  Cgc: string;
+  Ramo: string;
+  Cnae: string;
+  Planos: string;
 }
-export default function InfoCliente(props: InfoClienteProps) {
+export default function InfoClienteF(props: InfoClienteProps) {
   return (
     <div>
         {/* Informações do Clientes */}
@@ -26,12 +26,12 @@ export default function InfoCliente(props: InfoClienteProps) {
           </Flex>
           <Divider size="xs" />
           <Flex gap="xs" className={style.informacoes}>
-            <Text className={style.destaque}>Fantasia:</Text>
+            <Text className={style.destaque}>Apelido:</Text>
             <Text>{props.Fantasia}</Text>
           </Flex>
           <Divider size="xs" />
           <Flex gap="xs" className={style.informacoes}>
-            <Text className={style.destaque}>Razão Social:</Text>
+            <Text className={style.destaque}>Nome:</Text>
             <Text>{props.Razao}</Text>
           </Flex>
           <Divider size="xs" />
@@ -46,7 +46,7 @@ export default function InfoCliente(props: InfoClienteProps) {
           </Flex>
           <Divider size="xs" />
           <Flex gap="xs" className={style.informacoes}>
-            <Text className={style.destaque}>CNPJ:</Text>
+            <Text className={style.destaque}>CPF:</Text>
             <Text>{props.Cgc}</Text>
           </Flex>
           <Divider size="xs" />

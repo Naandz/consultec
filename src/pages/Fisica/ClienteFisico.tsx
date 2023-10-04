@@ -6,32 +6,25 @@ import { useNavigate, useParams } from "react-router-dom";
 import EnderecoCliente from "../../components/EnderecoCliente";
 import ListaFuncionarioJuridico from "../../components/Funcionarios/ListaFuncionarioJuridico";
 import ModalCadFuncionarios from "../../components/Funcionarios/ModalCadFuncionarios";
-import InfoClienteJ from "../../components/InfoClienteJ";
+import InfoClienteF from "../../components/InfoClienteF";
 import ModalCertificado from "../../components/ModalCadCertificado";
-import listaCertificadoById from "../../services/certificado/listaCertificadoById";
-import listaClienteById from "../../services/client/listaClienteById";
 import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
-import style from "./ClienteJuridico.module.css";
+import style from "./ClienteFisica.module.css";
 
 export default function ClienteJuridico() {
   const navigate = useNavigate();
-  const { id } = useParams() as { id: string };
+  const { id } = useParams();
 
-  const { data: Client } = useQuery({
-    queryKey: ["client"],
-    queryFn: async () => listaClienteById(id),
-  });
-
-  const { data: certificados } = useQuery({
-    queryKey: ["certificados"],
-    queryFn: async () => listaCertificadoById(id),
-  });
-
-  const { data, isFetching, isRefetching } = useQuery({
+  const { isError, data, isFetching, isRefetching } = useQuery({
     queryKey: ["funcionario"],
     queryFn: async () => listaFuncionarios(id),
   });
 
+  useEffect(() => {
+    if (isError) {
+      navigate("/juridica");
+    }
+  }, [isError, id]);
   return (
     <div>
       <Flex
@@ -40,25 +33,25 @@ export default function ClienteJuridico() {
         justify="space-between"
         className={style.conteudo}
       >
-        <InfoClienteJ
-          Contrato={Client?.contrato}
-          Fantasia={Client?.fantasia}
-          // Razao={Client?.razao}
-          Tel={Client?.telefone}
-          Email={Client?.email}
-          Cgc={Client?.cgc}
-          Ramo={Client?.ramoatividade}
-          Cnae={Client?.cnae}
-          // Planos={Client?.planos}
+        <InfoClienteF
+          Contrato="Ativo"
+          Fantasia="João"
+          Razao="João da Silva"
+          Tel="(11) 5555-5555"
+          Email="joao@email.com"
+          Cgc="123.456.789-00"
+          Ramo="Comércio de Eletrônicos"
+          Cnae="47.11-3/02"
+          Planos="Fiscal, Contábil e Pessoal"
         />
         <EnderecoCliente
-          Logradouro={Client?.logradouro}
-          Numero={Client?.numero}
-          Bairro={Client?.bairro}
-          Cidade={Client?.cidade}
-          Estado={Client?.estado}
-          Cep={Client?.cep}
-          Pais={Client?.pais}
+          Logradouro="Rua das Flores"
+          Numero="123"
+          Bairro="Bairro Central"
+          Cidade="Cidade Grande"
+          Estado="SP"
+          Cep="12345-678"
+          Pais="Brasil"
         />
         <Flex direction="column" align="center" className={style.certificados}>
           <Title order={2} mb="xs" className={style.titulo}>
@@ -73,15 +66,15 @@ export default function ClienteJuridico() {
             horizontalSpacing="xl"
             verticalAlignment="center"
             className={style.certificadosTable}
-            records={certificados || []}
+            records={data}
             fetching={isFetching || isRefetching}
-            idAccessor="_id"
+            idAccessor="cpf"
             columns={[
-              { accessor: "nome", title: "Nome", textAlignment: "center" },
-              { accessor: "senha", title: "Senha", textAlignment: "center" },
+              { accessor: "cpf", title: "Nome", textAlignment: "center" },
+              { accessor: "funcao", title: "Senha", textAlignment: "center" },
               {
-                accessor: "descricao",
-                title: "Descriação",
+                accessor: "telefone",
+                title: "Validade",
                 textAlignment: "center",
               },
             ]}
