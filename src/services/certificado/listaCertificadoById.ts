@@ -2,9 +2,9 @@ import api from "../api";
 
 import { Certificado } from "./Certificado";
 
-const listaCertificadoById = async (idcliente?: string) => {
+const listaCertificadoById = async (id?: string) => {
   const { data } = await api.get<Certificado[]>(
-    `/clients/certificate/${idcliente}`
+    `/clients/certificate/${id}`
   );
   return data;
 };
