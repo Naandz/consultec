@@ -4,9 +4,9 @@ import { AxiosError } from "axios";
 import { DataTable } from "mantine-datatable";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Acoes from "../../../components/Acoes";
-import deleteFuncionario from "../../../services/funcionarios/deletaFuncionario";
-import listaFuncionarios from "../../../services/funcionarios/listaFuncionarios";
+import Acoes from "../Acoes";
+import deleteFuncionario from "../../services/funcionarios/deletaFuncionario";
+import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
 
 export default function ListaFuncionarioJuridico() {
   const navigate = useNavigate();
@@ -59,6 +59,7 @@ export default function ListaFuncionarioJuridico() {
         fetching={isFetching || isRefetching}
         idAccessor="cpf"
         columns={[
+          { accessor: "nome", title: "Nome", textAlignment: "center" },
           { accessor: "cpf", title: "CPF", textAlignment: "center" },
           {
             accessor: "rg",
@@ -67,7 +68,6 @@ export default function ListaFuncionarioJuridico() {
           },
           { accessor: "funcao", title: "Função", textAlignment: "center" },
           { accessor: "telefone", title: "Tell", textAlignment: "center" },
-          { accessor: "contrato", title: "Contrato", textAlignment: "center" },
           {
             accessor: "",
             title: "Ações",
