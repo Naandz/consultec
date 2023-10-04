@@ -12,7 +12,7 @@ interface InfoClienteProps {
   Cnae: string;
   Planos: string;
 }
-export default function InfoCliente(props: InfoClienteProps) {
+export default function InfoClienteJ(props: InfoClienteProps) {
   return (
     <div>
         {/* Informações do Clientes */}

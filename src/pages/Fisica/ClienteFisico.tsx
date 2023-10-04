@@ -6,10 +6,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import EnderecoCliente from "../../components/EnderecoCliente";
 import ListaFuncionarioJuridico from "../../components/Funcionarios/ListaFuncionarioJuridico";
 import ModalCadFuncionarios from "../../components/Funcionarios/ModalCadFuncionarios";
-import InfoClienteJ from "../../components/InfoClienteJ";
+import InfoClienteF from "../../components/InfoClienteF";
 import ModalCertificado from "../../components/ModalCadCertificado";
 import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
-import style from "./ClienteJuridico.module.css";
+import style from "./ClienteFisica.module.css";
 
 export default function ClienteJuridico() {
   const navigate = useNavigate();
@@ -33,13 +33,13 @@ export default function ClienteJuridico() {
         justify="space-between"
         className={style.conteudo}
       >
-        <InfoClienteJ
+        <InfoClienteF
           Contrato="Ativo"
-          Fantasia="SuperLoja"
-          Razao="Empresa ABC Ltda."
+          Fantasia="João"
+          Razao="João da Silva"
           Tel="(11) 5555-5555"
-          Email="joao.silva@email.com"
-          Cgc="12.345.678/0001-90"
+          Email="joao@email.com"
+          Cgc="123.456.789-00"
           Ramo="Comércio de Eletrônicos"
           Cnae="47.11-3/02"
           Planos="Fiscal, Contábil e Pessoal"
