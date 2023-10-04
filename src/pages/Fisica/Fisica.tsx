@@ -65,7 +65,7 @@ export default function Fisica() {
             textAlignment: "right",
             render: (data) => (
               <Acoes
-                acaoDetalhar={() => navigate(`/detalha/${data.cgc}`)}
+                acaoDetalhar={() => navigate(`/cliente/fisico/${data.cgc}`)}
                 acaoEditar={() => navigate(`/edita/${data.cgc}`)}
                 acaoExcluir={() => exclui(data.cgc)}
               />
