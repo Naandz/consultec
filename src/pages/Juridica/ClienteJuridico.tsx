@@ -8,23 +8,30 @@ import ListaFuncionarioJuridico from "../../components/Funcionarios/ListaFuncion
 import ModalCadFuncionarios from "../../components/Funcionarios/ModalCadFuncionarios";
 import InfoCliente from "../../components/InfoCliente";
 import ModalCertificado from "../../components/ModalCadCertificado";
+import listaCertificadoById from "../../services/certificado/listaCertificadoById";
+import listaClienteById from "../../services/client/listaClienteById";
 import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
 import style from "./ClienteJuridico.module.css";
 
 export default function ClienteJuridico() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
 
-  const { isError, data, isFetching, isRefetching } = useQuery({
+  const { data: Client } = useQuery({
+    queryKey: ["client"],
+    queryFn: async () => listaClienteById(id),
+  });
+
+  const { data: certificados } = useQuery({
+    queryKey: ["certificados"],
+    queryFn: async () => listaCertificadoById(id),
+  });
+
+  const { data, isFetching, isRefetching } = useQuery({
     queryKey: ["funcionario"],
     queryFn: async () => listaFuncionarios(id),
   });
 
-  useEffect(() => {
-    if (isError) {
-      navigate("/juridica");
-    }
-  }, [isError, id]);
   return (
     <div>
       <Flex
@@ -34,24 +41,24 @@ export default function ClienteJuridico() {
         className={style.conteudo}
       >
         <InfoCliente
-          Contrato="Ativo"
-          Fantasia="SuperLoja"
-          Razao="Empresa ABC Ltda."
-          Tel="(11) 5555-5555"
-          Email="joao.silva@email.com"
-          Cgc="12.345.678/0001-90"
-          Ramo="Comércio de Eletrônicos"
-          Cnae="47.11-3/02"
-          Planos="Fiscal, Contábil e Pessoal"
+          Contrato={Client?.contrato}
+          Fantasia={Client?.fantasia}
+          // Razao={Client?.razao}
+          Tel={Client?.telefone}
+          Email={Client?.email}
+          Cgc={Client?.cgc}
+          Ramo={Client?.ramoatividade}
+          Cnae={Client?.cnae}
+          // Planos={Client?.planos}
         />
         <EnderecoCliente
-          Logradouro="Rua das Flores"
-          Numero="123"
-          Bairro="Bairro Central"
-          Cidade="Cidade Grande"
-          Estado="SP"
-          Cep="12345-678"
-          Pais="Brasil"
+          Logradouro={Client?.logradouro}
+          Numero={Client?.numero}
+          Bairro={Client?.bairro}
+          Cidade={Client?.cidade}
+          Estado={Client?.estado}
+          Cep={Client?.cep}
+          Pais={Client?.pais}
         />
         <Flex direction="column" align="center" className={style.certificados}>
           <Title order={2} mb="xs" className={style.titulo}>
@@ -66,15 +73,15 @@ export default function ClienteJuridico() {
             horizontalSpacing="xl"
             verticalAlignment="center"
             className={style.certificadosTable}
-            records={data}
+            records={certificados || []}
             fetching={isFetching || isRefetching}
-            idAccessor="cpf"
+            idAccessor="_id"
             columns={[
-              { accessor: "cpf", title: "Nome", textAlignment: "center" },
-              { accessor: "funcao", title: "Senha", textAlignment: "center" },
+              { accessor: "nome", title: "Nome", textAlignment: "center" },
+              { accessor: "senha", title: "Senha", textAlignment: "center" },
               {
-                accessor: "telefone",
-                title: "Validade",
+                accessor: "descricao",
+                title: "Descriação",
                 textAlignment: "center",
               },
             ]}
@@ -88,7 +95,6 @@ export default function ClienteJuridico() {
             className={style.adicionarButton}
           >
             <ModalCertificado />
-            
           </Flex>
         </Flex>
         {/* Lista de Funcionários */}
@@ -106,7 +112,6 @@ export default function ClienteJuridico() {
             className={style.adicionarButton}
           >
             <ModalCadFuncionarios />
-          
           </Flex>
         </Flex>
       </Flex>

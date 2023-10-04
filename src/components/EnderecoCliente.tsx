@@ -2,13 +2,13 @@ import { Divider, Flex, Text, Title } from "@mantine/core";
 import style from "../pages/Juridica/ClienteJuridico.module.css";
 
 interface EnderecoCliente {
-  Logradouro: string;
-  Numero: string;
-  Bairro: string;
-  Cidade: string;
-  Estado: string;
-  Cep: string;
-  Pais: string;
+  Logradouro?: string;
+  Numero?: string;
+  Bairro?: string;
+  Cidade?: string;
+  Estado?: string;
+  Cep?: string;
+  Pais?: string;
 }
 export default function EnderecoCliente(props: EnderecoCliente) {
   return (

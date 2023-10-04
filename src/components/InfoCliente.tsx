@@ -2,15 +2,15 @@ import { Divider, Flex, Text, Title } from "@mantine/core";
 import style from "../pages/Juridica/ClienteJuridico.module.css";
 
 interface InfoClienteProps {
-  Contrato: string;
-  Fantasia: string;
-  Razao: string;
-  Tel: string;
-  Email: string;
-  Cgc: string;
-  Ramo: string;
-  Cnae: string;
-  Planos: string;
+  Contrato?: string;
+  Fantasia?: string;
+  Razao?: string;
+  Tel?: string;
+  Email?: string;
+  Cgc?: string;
+  Ramo?: string;
+  Cnae?: string;
+  Planos?: string;
 }
 export default function InfoCliente(props: InfoClienteProps) {
   return (

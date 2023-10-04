@@ -1,4 +1,5 @@
 export type Clientes = {
+  _id: string;
   nome?: string;
   apelido?: string;
   bairro?: string;
@@ -11,7 +12,7 @@ export type Clientes = {
   pais?: string;
   fantasia?: string;
   ramodeatividade?: string;
-  idcontador?: string;
+  idcontador: string;
   logradouro?: string;
   numero?: string;
   passsefaz?: string;
