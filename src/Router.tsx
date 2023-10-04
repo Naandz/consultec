@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import CadastroFisica from "./pages/Fisica/CadastroFisica";
-import ClienteFisica from "./pages/Fisica/ClienteFisica";
+import ClienteFisico from "./pages/Fisica/ClienteFisico";
 import Fisica from "./pages/Fisica/Fisica";
 import Home from "./pages/Home/Home";
 import CadastroJuridica from "./pages/Juridica/CadastroJuridica";
@@ -65,12 +65,12 @@ export function Router() {
             element={<ProtectedRoute outlet={<CadastroFisica />} />}
           />
           <Route
-            path="/cliente/fisica/clientefisica"
-            element={<ProtectedRoute outlet={<ClienteFisica />} />}
-          />
-          <Route
             path="/cliente/juridico/:id"
             element={<ProtectedRoute outlet={<ClienteJuridico />} />}
+          />
+          <Route
+            path="/cliente/fisico/:id"
+            element={<ProtectedRoute outlet={<ClienteFisico/>} />}
           />
         </Route>
       </Routes>

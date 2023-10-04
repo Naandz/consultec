@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import EnderecoCliente from "../../components/EnderecoCliente";
 import ListaFuncionarioJuridico from "../../components/Funcionarios/ListaFuncionarioJuridico";
 import ModalCadFuncionarios from "../../components/Funcionarios/ModalCadFuncionarios";
-import InfoCliente from "../../components/InfoCliente";
+import InfoClienteJ from "../../components/InfoClienteJ";
 import ModalCertificado from "../../components/ModalCadCertificado";
 import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
 import style from "./ClienteJuridico.module.css";
@@ -33,7 +33,7 @@ export default function ClienteJuridico() {
         justify="space-between"
         className={style.conteudo}
       >
-        <InfoCliente
+        <InfoClienteJ
           Contrato="Ativo"
           Fantasia="SuperLoja"
           Razao="Empresa ABC Ltda."
@@ -88,7 +88,6 @@ export default function ClienteJuridico() {
             className={style.adicionarButton}
           >
             <ModalCertificado />
-            
           </Flex>
         </Flex>
         {/* Lista de Funcionários */}
@@ -106,7 +105,6 @@ export default function ClienteJuridico() {
             className={style.adicionarButton}
           >
             <ModalCadFuncionarios />
-          
           </Flex>
         </Flex>
       </Flex>
