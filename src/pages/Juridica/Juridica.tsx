@@ -67,7 +67,7 @@ export default function Juridica() {
             render: (data) => (
               <Acoes
                 acaoDetalhar={() =>
-                  navigate(`/juridica/funcionario/${data.cgc}`)
+                  navigate(`/cliente/juridico/${data.cgc}`)
                 }
                 acaoEditar={() => navigate(`/edita/${data.cgc}`)}
                 acaoExcluir={() => exclui(data.cgc)}
