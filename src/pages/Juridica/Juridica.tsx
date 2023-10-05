@@ -49,7 +49,7 @@ export default function Juridica() {
         verticalAlignment="center"
         records={data}
         fetching={isFetching || isRefetching}
-        idAccessor="_id"
+      idAccessor="_id"
         columns={[
           { accessor: "fantasia", title: "Fantasia", textAlignment: "center" },
           {

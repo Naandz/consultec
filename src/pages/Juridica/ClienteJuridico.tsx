@@ -1,7 +1,7 @@
 import { Flex, Title } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { DataTable } from "mantine-datatable";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import EnderecoCliente from "../../components/EnderecoCliente";
 import ListaFuncionarioJuridico from "../../components/Funcionarios/ListaFuncionarioJuridico";
 import ModalCadFuncionarios from "../../components/Funcionarios/ModalCadFuncionarios";
@@ -9,11 +9,9 @@ import InfoClienteJ from "../../components/InfoClienteJ";
 import ModalCertificado from "../../components/ModalCadCertificado";
 import listaCertificadoById from "../../services/certificado/listaCertificadoById";
 import listaClienteById from "../../services/client/listaClienteById";
-import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
 import style from "./ClienteJuridico.module.css";
 
 export default function ClienteJuridico() {
-  const navigate = useNavigate();
   const { id } = useParams() as { id: string };
 
   const { data: Client } = useQuery({
@@ -25,7 +23,6 @@ export default function ClienteJuridico() {
     data: certificados,
     isFetching,
     isRefetching,
-    refetch,
   } = useQuery({
     queryKey: ["certificados"],
     queryFn: async () => listaCertificadoById(id),
@@ -96,14 +93,13 @@ export default function ClienteJuridico() {
             <ModalCertificado id={id} />
           </Flex>
         </Flex>
-        {/* Lista de Funcionários */}
         <Flex direction="column" className={style.funcionarios}>
           <Flex justify="center" mb="xs">
             <Title order={2} className={style.titulo}>
               Funcionários
             </Title>
           </Flex>
-          <ListaFuncionarioJuridico id={id} />
+          {/* <ListaFuncionarioJuridico id={id} /> */}
           <Flex
             direction="row"
             justify="flex-end"

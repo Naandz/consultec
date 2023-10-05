@@ -25,11 +25,9 @@ export default function ModalCadCertificado(props: Props) {
     },
   });
 
-  const cadastra = async (
-    certificado: Pick<Certificado, "nome" | "senha" | "dtvalidade">
-  ) => {
+  const cadastra = async (certificado: Certificado) => {
     try {
-      await cadastraCertificado(props.id, certificado);
+      await cadastraCertificado(certificado);
 
       form.reset();
     } catch (error) {
