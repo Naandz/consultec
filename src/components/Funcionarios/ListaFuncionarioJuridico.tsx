@@ -7,16 +7,16 @@ import deleteFuncionario from "../../services/funcionarios/deletaFuncionario";
 import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
 import Acoes from "../Acoes";
 
-interface props {
+interface PropsData {
   id: string;
 }
 
-export default function ListaFuncionarioJuridico({ id }: props) {
+export default function ListaFuncionarioJuridico( props: PropsData) {
   const navigate = useNavigate();
 
   const { data, isFetching, isRefetching, refetch } = useQuery({
     queryKey: ["funcionario"],
-    queryFn: async () => listaFuncionarios(id),
+    queryFn: async () => listaFuncionarios(props.id),
   });
 
   const exclui = async (cpf: string) => {
