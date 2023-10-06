@@ -15,6 +15,7 @@ import ClienteJuridico from "./pages/Juridica/ClienteJuridico";
 import Juridica from "./pages/Juridica/Juridica";
 import Login from "./pages/Login/Login";
 import { useAuthStore } from "./stores/useAuthStore";
+import NotFound from "./pages/NotFound";
 
 const AuthRoute = () => {
   const { access_token } = useAuthStore.getState();
@@ -42,6 +43,9 @@ export function Router() {
         <Route element={<AuthRoute />}>
           <Route path="/session/login" element={<Login />} />
         </Route>
+        <Route>
+          <Route path="*" element={<NotFound />} />
+        </Route>
         <Route path="/" element={<ProtectedRoute outlet={<Home />} />}>
           <Route
             path="/juridica"
@@ -65,7 +69,7 @@ export function Router() {
           />
           <Route
             path="/cliente/fisico/:id"
-            element={<ProtectedRoute outlet={<ClienteFisico/>} />}
+            element={<ProtectedRoute outlet={<ClienteFisico />} />}
           />
         </Route>
       </Routes>
