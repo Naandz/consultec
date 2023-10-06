@@ -47,9 +47,9 @@ export default function Juridica() {
         highlightOnHover
         horizontalSpacing="xs"
         verticalAlignment="center"
-        records={data}
+        records={data || []}
         fetching={isFetching || isRefetching}
-      idAccessor="_id"
+        idAccessor="_id"
         columns={[
           { accessor: "fantasia", title: "Fantasia", textAlignment: "center" },
           {
@@ -61,7 +61,7 @@ export default function Juridica() {
           { accessor: "telefone", title: "Tell", textAlignment: "center" },
           { accessor: "contrato", title: "Contrato", textAlignment: "center" },
           {
-            accessor: "",
+            accessor: "acoes",
             title: "Ações",
             textAlignment: "right",
             render: (data) => (

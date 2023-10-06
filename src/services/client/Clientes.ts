@@ -7,12 +7,14 @@ export type Clientes = {
   cgc: string;
   cidade?: string;
   contrato?: string;
+  fiscal?: string;
+  pessoal?: string;
+  contabil?: string;
   email?: string;
   estado?: string;
   pais?: string;
   fantasia?: string;
   ramodeatividade?: string;
-  idcontador: string;
   logradouro?: string;
   numero?: string;
   passsefaz?: string;

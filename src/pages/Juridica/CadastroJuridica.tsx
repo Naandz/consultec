@@ -2,9 +2,8 @@ import { Button, Flex, Input, Switch } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import style from "./Cadastro.module.css";
 import cadastraCliente from "../../services/client/cadastraClientes";
-import { InputBase } from '@mantine/core';
-import { IMaskInput } from 'react-imask';
-
+import { InputBase } from "@mantine/core";
+import { IMaskInput } from "react-imask";
 
 export default function CadastroJuridica() {
   interface FormValues {
@@ -13,6 +12,9 @@ export default function CadastroJuridica() {
     cgc: string;
     cidade: string;
     contrato: string;
+    fiscal: string;
+    pessoal: string;
+    contabil: string;
     email: string;
     estado: string;
     fantasia: string;
@@ -33,7 +35,10 @@ export default function CadastroJuridica() {
       cep: "",
       cgc: "",
       cidade: "",
-      contrato: "",
+      contrato: "S" || "N",
+      fiscal: "",
+      pessoal: "",
+      contabil: "",
       email: "",
       estado: "",
       fantasia: "",
@@ -52,7 +57,6 @@ export default function CadastroJuridica() {
       cep: isNotEmpty("CEP"),
       cgc: isNotEmpty("CNPJ"),
       cidade: isNotEmpty("Cidade"),
-      contrato: isNotEmpty("Contrato"),
       email: isNotEmpty("E-mail"),
       estado: isNotEmpty("Estado"),
       fantasia: isNotEmpty("Fantasia"),
@@ -65,7 +69,6 @@ export default function CadastroJuridica() {
       usursefaz: isNotEmpty("Usuário"),
       cnae: isNotEmpty("Cnae"),
       pais: isNotEmpty("Pais"),
-
     },
   });
 
@@ -86,14 +89,11 @@ export default function CadastroJuridica() {
             <Flex columnGap="5em" rowGap="xs" direction="row" wrap="wrap">
               <Flex justify="center" align="start" gap="xs" direction="column">
                 <Flex>
-                  <Switch.Group
+                  <Switch
                     label="Contrato"
-                    withAsterisk
                     size="sm"
                     {...form.getInputProps("contrato")}
-                  >
-                    <Switch value="Contrato" />
-                  </Switch.Group>
+                  />
                 </Flex>
                 <div>
                   <label htmlFor="Razão Social">Razão Social</label>
@@ -174,15 +174,21 @@ export default function CadastroJuridica() {
               </Flex>
               <Flex justify="center" align="center" gap="xs" direction="column">
                 <Flex align="center" columnGap="5.4em" direction="row">
-                  <Switch.Group label="Fiscal" size="sm">
-                    <Switch value="fiscal" />
-                  </Switch.Group>
-                  <Switch.Group label="Pessoal" size="sm">
-                    <Switch value="pessoal" />
-                  </Switch.Group>
-                  <Switch.Group label="Contábil" size="sm">
-                    <Switch value="contabil" />
-                  </Switch.Group>
+                  <Switch
+                    label="Fiscal"
+                    size="sm"
+                    {...form.getInputProps("fiscal")}
+                  />
+                  <Switch
+                    label="Pessoal"
+                    size="sm"
+                    {...form.getInputProps("pessoal")}
+                  />
+                  <Switch
+                    label="Contábil"
+                    size="sm"
+                    {...form.getInputProps("contabil")}
+                  />
                 </Flex>
                 <div>
                   <label htmlFor="Nome Fantasia">Nome Fantasia</label>
