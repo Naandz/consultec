@@ -5,14 +5,14 @@ import { DataTable } from "mantine-datatable";
 import { useNavigate } from "react-router-dom";
 import Acoes from "../../components/Acoes";
 import deleteClient from "../../services/client/deletaCliente";
-import listaClientes from "../../services/client/listaClientes";
+import listaClientesF from "../../services/client/listaClientesF";
 
 export default function Fisica() {
   const navigate = useNavigate();
 
   const { data, isFetching, isRefetching, refetch } = useQuery({
     queryKey: ["client"],
-    queryFn: async () => listaClientes(),
+    queryFn: async () => listaClientesF(),
   });
 
   const exclui = async (cgc: string) => {

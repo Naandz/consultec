@@ -181,7 +181,6 @@ export default function ClienteJuridico() {
             mt="xs"
             className={style.adicionarButton}
           >
-            {/* <ModalCertificado id={id} /> */}
           </Flex>
         </Flex>
         <Flex direction="column" className={style.funcionarios}>

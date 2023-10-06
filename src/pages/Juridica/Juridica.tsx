@@ -5,14 +5,14 @@ import { DataTable } from "mantine-datatable";
 import { useNavigate } from "react-router-dom";
 import Acoes from "../../components/Acoes";
 import deleteClient from "../../services/client/deletaCliente";
-import listaClientes from "../../services/client/listaClientes";
+import listaClientesJ from "../../services/client/listaClientesJ";
 
 export default function Juridica() {
   const navigate = useNavigate();
 
   const { data, isFetching, isRefetching, refetch } = useQuery({
     queryKey: ["client"],
-    queryFn: async () => listaClientes(),
+    queryFn: async () => listaClientesJ(),
   });
 
   const exclui = async (cgc: string) => {
