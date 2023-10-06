@@ -44,7 +44,7 @@ export function Router() {
           <Route path="/session/login" element={<Login />} />
         </Route>
         <Route>
-          <Route path="*" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
         </Route>
         <Route path="/" element={<ProtectedRoute outlet={<Home />} />}>
           <Route
