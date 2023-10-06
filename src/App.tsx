@@ -1,4 +1,5 @@
 import { Notifications } from "@mantine/notifications";
+import { ModalsProvider } from "@mantine/modals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Router } from "./Router";
 import { MantineProvider } from "@mantine/core";
@@ -17,8 +18,10 @@ function App() {
     <>
       <MantineProvider theme={{ loader: "bars" }}>
         <QueryClientProvider client={queryClient}>
-          <Notifications />
-          <Router />
+          <ModalsProvider>
+            <Notifications />
+            <Router />
+          </ModalsProvider>
         </QueryClientProvider>
       </MantineProvider>
     </>
