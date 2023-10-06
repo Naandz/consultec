@@ -7,13 +7,13 @@ import EnderecoCliente from "../../components/EnderecoCliente";
 import ListaFuncionarioJuridico from "../../components/Funcionarios/ListaFuncionarioJuridico";
 import ModalCadFuncionarios from "../../components/Funcionarios/ModalCadFuncionarios";
 import InfoClienteF from "../../components/InfoClienteF";
-import ModalCertificado from "../../components/ModalCadCertificado";
+// import ModalCertificado from "../../components/ModalCadCertificado";
 import listaFuncionarios from "../../services/funcionarios/listaFuncionarios";
 import style from "./ClienteFisica.module.css";
 
 export default function ClienteJuridico() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
 
   const { isError, data, isFetching, isRefetching } = useQuery({
     queryKey: ["funcionario"],
@@ -87,7 +87,7 @@ export default function ClienteJuridico() {
             mt="xs"
             className={style.adicionarButton}
           >
-            <ModalCertificado />
+            {/* <ModalCertificado /> */}
           </Flex>
         </Flex>
         {/* Lista de Funcionários */}
@@ -97,7 +97,7 @@ export default function ClienteJuridico() {
               Funcionários
             </Title>
           </Flex>
-          <ListaFuncionarioJuridico />
+          <ListaFuncionarioJuridico id={id} />
           <Flex
             direction="row"
             justify="flex-end"
